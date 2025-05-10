@@ -20,9 +20,10 @@
 
     <View
         android:id="@+id/topBackground"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="416dp"
+        android:layout_height="719dp"
         android:background="@drawable/top_rounded_background"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,86 +32,89 @@
         android:id="@+id/imageView4"
         android:layout_width="288dp"
         android:layout_height="247dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/logo_de_la_aplicacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logoclub"
-        android:contentDescription="@string/logo_de_la_aplicacion"/>
+        app:srcCompat="@drawable/logoclub" />
+
 
     <LinearLayout
         android:id="@+id/login_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:background="@drawable/login_container"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:padding="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.9">
+
+        <Button
+            android:id="@+id/btn_in"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#B11719"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="@string/text_in"
+            android:textColor="#E5E5E5"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
             android:fontFamily="@font/nunito_bold"
             android:text="@string/welcome"
-            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:layout_height="48dp"
+            android:layout_marginBottom="30dp"
+            android:autofillHints="emailAddress"
+            android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/txt_pass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textAlignment="viewStart"
-            android:textColor="#A7A8A9" />
+            android:layout_height="48dp"
+            android:layout_marginBottom="30dp"
+            android:autofillHints="password"
+            android:hint="@string/pass"
+            android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/btn_in"
-            android:layout_width="308dp"
+            android:id="@+id/btn_inn"
+            android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="#B11719"
             android:fontFamily="@font/nunito_extrabold"
             android:text="@string/text_in"
-            android:textAlignment="center"
             android:textColor="#E5E5E5"
             android:textSize="18sp"
-            android:textStyle="bold"
-            app:cornerRadius="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-        
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/register"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="65dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="@font/nunito"
             android:text="@string/text_forgot"
-            android:textAlignment="center"
             android:textColor="#000000"
-            android:textColorLink="#B11719"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            android:textSize="16sp" />
     </LinearLayout>
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
