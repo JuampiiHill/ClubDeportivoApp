@@ -9,6 +9,9 @@
     <string name="text_forgot">Olvidé mi contraseña</string>
     <string name="pass">Contraseña</string>
     <string name="email">E-mail</string>
-
+    <string name="name">Nombre</string>
+    <string name="surname">Apellido</string>
+    <string name="repeat_Pass">Repetir contraseña</string>
+    <string name="text_login">¿Tienes una cuenta? Inicia sesión</string>
 
 </resources>
