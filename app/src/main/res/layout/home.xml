@@ -9,9 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo_oscuro"
-    android:clickable="false"
-    android:background="@color/fondo_oscuro">
-
+    android:clickable="false">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -19,7 +17,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/rectangle_8"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="614dp" />
+        tools:layout_editor_absoluteY="766dp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -127,10 +125,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677" />
+        app:layout_constraintVertical_bias="0.704" />
 
     <TextView
         android:id="@+id/textView3"
@@ -143,7 +141,7 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.744" />
 
     <ImageButton
         android:id="@+id/imageButton13"
