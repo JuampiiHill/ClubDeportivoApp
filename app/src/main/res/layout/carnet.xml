@@ -1,6 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eclipse_fondooscuro"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-31dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="165dp"
+        android:layout_height="138dp"
+        android:layout_marginBottom="740dp"
+        android:background="@color/fondo_oscuro"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.063"
+        app:srcCompat="@drawable/logoclub" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="331dp"
+        android:layout_height="715dp"
+        android:backgroundTint="#FFFFFF"
+        app:cornerRadius="@android:dimen/system_app_widget_background_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.855" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView2"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Estado del a cuota"
+        android:textColor="#A7A8A9"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="529dp" />
+
+    <EditText
+        android:id="@+id/editTextDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/nunito_bold"
+        android:inputType="date"
+        android:text="Vencimiento"
+        android:textColor="#A7A8A9"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="601dp" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="195dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#B11719"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Volver"
+        android:textColor="#E5E5E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.839" />
+
+    <EditText
+        android:id="@+id/editTextNumber3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/nunito_bold"
+        android:inputType="number"
+        android:text="Documento"
+        android:textColor="#A7A8A9"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="389dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Nombre de usuario"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.387" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@tools:sample/avatars"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="181dp"
+        tools:srcCompat="@drawable/user" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="195dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#A7A8A9"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Volver"
+        android:textColor="#E5E5E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="215dp"
+        android:layout_height="47dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Género"
+        android:textColor="#A7A8A9"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="457dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
