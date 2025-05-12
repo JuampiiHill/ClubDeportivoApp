@@ -31,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
             val lastName = inputLastName.text.toString()
 
             if (name.isNotEmpty() && lastName.isNotEmpty()) {
-                val intent = Intent(this, SuccessRegisterActivity::class.java)
+                val intent = Intent(this, SuccessRegister::class.java)
                 startActivity(intent)
             } else {
                 // Keep the warning for incomplete fields
