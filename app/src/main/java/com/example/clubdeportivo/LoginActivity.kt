@@ -1,5 +1,7 @@
 package com.example.clubdeportivo
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
@@ -14,6 +16,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        // CÓDIGO PARA MOSTRAR DIFERENTES FORMULARIOS DEPENDIENDO QUE BOTÓN SE PRESIONE
         val btnIn: Button = findViewById(R.id.btn_in)
         val btnRegister: Button = findViewById(R.id.btn_register)
         val layoutRegister = findViewById<LinearLayout>(R.id.register_container)
@@ -47,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                 btnRegister.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A7A8A9")))
                 btnIn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#B11719")))
                 paramsRegister.width = FrameLayout.LayoutParams.MATCH_PARENT
-                paramsIn.width = dpToPx(140)
+                paramsIn.width = dpToPx(160)
                 btnIn.z = 1f
                 btnRegister.z = 0f
                 layoutRegister.visibility = View.GONE
@@ -65,6 +69,13 @@ class LoginActivity : AppCompatActivity() {
         btnIn.setOnClickListener {
             toggleButtons(false)
             // lógica de ingreso
+        }
+
+        //EVENTO PARA LLEVARNOS AL HOME DE LA APP. ACA DEBERIA PONERSE LA LOGICA DE BASE DE DATOS
+        val btnLargeIn: Button = findViewById(R.id.btn_large_in)
+        btnLargeIn.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 }
