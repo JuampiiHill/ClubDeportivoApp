@@ -13,5 +13,16 @@
     <string name="surname">Apellido</string>
     <string name="repeat_Pass">Repetir contraseña</string>
     <string name="text_login">¿Tienes una cuenta? Inicia sesión</string>
+    <string name="user_rol">Profesor</string>
+    <string name="add_new_member">Inscribir nuevo socio</string>
+    <string name="pay">Abonar cuota</string>
+    <string name="list">Estado de cuotas</string>
+    <string name="activity">Asignar Actividad</string>
+    <string name="icon_new_member">Icono de nuevo Socio</string>
+    <string name="icon_add_acvitivy">Icono de asignar actividad</string>
+    <string name="icon_list_quotas">Icono de asignar actividad</string>
+    <string name="icon_pay_quota">icono de pago de cuota</string>
+
+
 
 </resources>

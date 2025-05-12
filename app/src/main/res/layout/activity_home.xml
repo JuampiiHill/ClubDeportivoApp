@@ -9,26 +9,221 @@
     tools:context=".HomeActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="180dp"
-        android:layout_height="159dp"
-        android:layout_marginBottom="572dp"
+        android:id="@+id/logo"
+        android:layout_width="203dp"
+        android:layout_height="162dp"
         android:contentDescription="@string/logo_de_la_aplicacion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001"
         app:srcCompat="@drawable/logoclub" />
 
-    <LinearLayout
-        android:id="@+id/buttonPanel"
+    <TextView
+        android:id="@+id/user_rol"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="86dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="@string/user_rol"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_container_pay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <GridLayout
+        android:id="@+id/button_container_listActivity"
+        android:layout_width="190dp"
+        android:layout_height="195dp"
+        android:layout_marginHorizontal="16dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_container_newMember"
+        app:layout_constraintVertical_bias="0.17000002">
 
 
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="186dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_container"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="126dp"
+                android:layout_height="89dp"
+                android:contentDescription="@string/icon_list_quotas"
+                android:src="@drawable/list_check_solid"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_extrabold"
+                android:gravity="center"
+                android:text="@string/list"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/button_container_pay"
+        android:layout_width="190dp"
+        android:layout_height="195dp"
+        android:layout_marginHorizontal="16dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3">
+
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="186dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_container"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="126dp"
+                android:layout_height="69dp"
+                android:src="@drawable/credit_card_solid"
+                app:tint="#FFFFFF"
+                android:contentDescription="@string/icon_pay_quota"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_extrabold"
+                android:gravity="center"
+                android:text="@string/pay"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/button_container_newMember"
+        android:layout_width="190dp"
+        android:layout_height="195dp"
+        android:layout_marginHorizontal="16dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3">
+
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="186dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_container"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="126dp"
+                android:layout_height="89dp"
+                android:src="@drawable/user_plus_solid"
+                app:tint="#FFFFFF"
+                android:contentDescription="@string/icon_new_member"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_extrabold"
+                android:gravity="center"
+                android:text="@string/add_new_member"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/button_container_activity"
+        android:layout_width="190dp"
+        android:layout_height="195dp"
+        android:layout_marginHorizontal="16dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_container_pay"
+        app:layout_constraintVertical_bias="0.17000002">
+
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="186dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_container"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="126dp"
+                android:layout_height="89dp"
+                android:contentDescription="@string/icon_add_acvitivy"
+                android:src="@drawable/dumbbell_solid"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_extrabold"
+                android:gravity="center"
+                android:text="@string/activity"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="416dp"
+        android:layout_height="100dp"
+        android:layout_margin="0dp"
+        android:background="@drawable/navigation_bar"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_container_activity"
+        app:layout_constraintVertical_bias="1.0">
 
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
