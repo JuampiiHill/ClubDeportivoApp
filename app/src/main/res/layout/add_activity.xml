@@ -1,158 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/fondo_claro"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fondo_oscuro"
+    android:clickable="false">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/eclipse_fondooscuro"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-35dp" />
+        android:src="@drawable/rectangle_8"
+        android:contentDescription="@string/logo_de_la_aplicacion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="165dp"
-        android:layout_height="138dp"
-        android:background="@color/fondo_oscuro"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="357dp"
+        android:layout_height="144dp"
         android:scaleType="fitXY"
+        android:src="@drawable/rectangle_7"
+        android:contentDescription="@string/desc_fondo_inferior"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.063"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.776" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="155dp"
+        android:layout_height="121dp"
+        android:contentDescription="@string/logo_de_la_aplicacion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:srcCompat="@drawable/logoclub" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="331dp"
-        android:layout_height="715dp"
-        android:backgroundTint="#FFFFFF"
-        app:cornerRadius="@android:dimen/system_app_widget_background_radius"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profesor"
+        android:textColor="#FEFEFE"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.848" />
+
+    <!-- Botones superiores -->
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="149dp"
+        android:layout_height="145dp"
+        android:background="@color/fondo_oscuro"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_actividad"
+        app:layout_constraintTop_toTopOf="@id/imageButton8"
+        app:layout_constraintStart_toEndOf="@id/imageButton8"
+        app:srcCompat="@drawable/btn_act" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="149dp"
+        android:layout_height="145dp"
+        android:background="@color/fondo_oscuro"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_socio"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_newmember" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="149dp"
+        android:layout_height="145dp"
+        android:background="@color/fondo_oscuro"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_pago"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toEndOf="@id/imageButton8"
+        app:srcCompat="@drawable/btn_card" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="149dp"
+        android:layout_height="145dp"
+        android:background="@color/fondo_oscuro"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_estado"
+        app:layout_constraintTop_toBottomOf="@id/imageButton8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_list" />
+
+    <!-- Noticias -->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOTICIAS"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imageButton9"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/nunito" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Nombre de la actividad"
-        android:textSize="24sp"
+        android:text="Se ha registrado exitosamente"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Botonera inferior -->
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="92dp"
+        android:layout_height="75dp"
+        android:background="@color/fondo_oscuro2"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_home"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
+        app:srcCompat="@drawable/btn_home_icon" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Agregar participante"
-        android:textSize="24sp"
+    <ImageButton
+        android:id="@+id/imageButton13"
+        android:layout_width="92dp"
+        android:layout_height="75dp"
+        android:background="@color/fondo_oscuro2"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_socios"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintStart_toEndOf="@id/imageButton12"
+        app:srcCompat="@drawable/btn_members_icon" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="195dp"
-        android:layout_height="62dp"
-        android:backgroundTint="#B11719"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Volver"
-        android:textColor="#E5E5E5"
+    <ImageButton
+        android:id="@+id/imageButton14"
+        android:layout_width="92dp"
+        android:layout_height="75dp"
+        android:background="@color/fondo_oscuro2"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_actividades"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.839" />
+        app:layout_constraintStart_toEndOf="@id/imageButton13"
+        app:srcCompat="@drawable/btn_activity_icon" />
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="195dp"
-        android:layout_height="62dp"
-        android:backgroundTint="#A7A8A9"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Volver"
-        android:textColor="#E5E5E5"
+    <ImageButton
+        android:id="@+id/imageButton15"
+        android:layout_width="92dp"
+        android:layout_height="75dp"
+        android:background="@color/fondo_oscuro2"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/desc_btn_pagos"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@tools:sample/avatars"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="161dp"
-        tools:srcCompat="@drawable/activcirculito" />
-
-    <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:inputType="time"
-        android:text="Horario"
-        android:textColor="#A7A8A9"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="366dp" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:inputType="date"
-        android:text="Día"
-        android:textColor="#A7A8A9"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="423dp" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:inputType="number"
-        android:text="Cupo"
-        android:textColor="#A7A8A9"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="483dp" />
-
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:inputType="number"
-        android:text="Documento"
-        android:textColor="#A7A8A9"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="607dp" />
+        app:layout_constraintStart_toEndOf="@id/imageButton14"
+        app:srcCompat="@drawable/btn_pay_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

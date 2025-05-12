@@ -5,5 +5,13 @@
     <color name="fondo_oscuro">#121720</color>
     <color name="fondo_oscuro2">#090F16</color>
     <color name="fondo_claro">#E5E5E5</color>
+    <color name="dark_footer">#1A1A1A</color>
+    <color name="dark_background">#121720</color>
+    <color name="paid_green">#007E33</color>
+    <color name="overdue_red">#B11719</color>
+    <color name="red">#C62828</color>
+    <color name="gray">#BDBDBD</color>
+    <color name="offwhite">#FAF9F9</color>
+
 
 </resources>

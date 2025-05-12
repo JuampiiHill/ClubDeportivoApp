@@ -1,33 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    android:background="@color/offwhite">
 
+    <!-- Header -->
     <LinearLayout
         android:id="@+id/top_container"
-        android:layout_width="412dp"
-        android:layout_height="405dp"
-        android:background="@drawable/top_rounded_background"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/top_rounded_background"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="288dp"
-            android:layout_height="247dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/logo_de_la_aplicacion"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logoclub" />
-
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/logoclub"
+            android:contentDescription="@string/logo_de_la_aplicacion" />
     </LinearLayout>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrar socio"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/top_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Input fields -->
+    <EditText
+        android:id="@+id/inputDocument"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Documento"
+        android:padding="12dp"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/titleRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
+
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:padding="12dp"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/inputDocument"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/inputLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Apellido"
+        android:padding="12dp"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/inputName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"
+        android:backgroundTint="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/inputLastName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Register button -->
+    <Button
+        android:id="@+id/btnRegisterUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        android:backgroundTint="@color/red"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/inputEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="64dp"
+        android:layout_marginTop="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

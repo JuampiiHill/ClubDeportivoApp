@@ -8,6 +8,20 @@
     <string name="text_forgot">Olvidé mi contraseña</string>
     <string name="pass">Contraseña</string>
     <string name="email">E-mail</string>
+    <string name="desc_btn_actividad">Botón para asignar actividad</string>
+    <string name="desc_btn_estado">Botón para ver estado de cuotas</string>
+    <string name="desc_btn_socio">Botón para inscribir nuevo socio</string>
+    <string name="desc_btn_pago">Botón para abonar cuota</string>
+    <string name="desc_btn_home">Botón para volver a inicio</string>
+    <string name="desc_btn_socios">Botón para ver socios</string>
+    <string name="desc_btn_actividades">Botón para ver actividades</string>
+    <string name="desc_btn_pagos">Botón para ver pagos</string>
+    <string name="desc_fondo_inferior">Fondo decorativo inferior</string>
+    <string name="logo_description">App logo</string>
+    <string name="home_button">Home</string>
+    <string name="members_button">Members</string>
+    <string name="activities_button">Activities</string>
+    <string name="payments_button">Payments</string>
 
 
 </resources>
