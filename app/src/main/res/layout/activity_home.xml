@@ -54,6 +54,7 @@
 
 
         <LinearLayout
+            android:id="@+id/btn_list_quotas"
             android:layout_width="160dp"
             android:layout_height="186dp"
             android:layout_columnWeight="1"
@@ -97,6 +98,7 @@
 
 
         <LinearLayout
+            android:id="@+id/btn_pay"
             android:layout_width="160dp"
             android:layout_height="186dp"
             android:layout_columnWeight="1"
@@ -140,11 +142,13 @@
 
 
         <LinearLayout
+            android:id="@+id/btn_add_member"
             android:layout_width="160dp"
             android:layout_height="186dp"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             android:background="@drawable/button_container"
+            android:clickable="true"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -183,6 +187,7 @@
 
 
         <LinearLayout
+            android:id="@+id/btn_add_activity"
             android:layout_width="160dp"
             android:layout_height="186dp"
             android:layout_columnWeight="1"
@@ -226,6 +231,7 @@
             android:id="@+id/nav_btn_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
@@ -257,6 +263,7 @@
             android:id="@+id/nav_btn_members"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
@@ -289,6 +296,7 @@
             android:id="@+id/nav_btn_activities"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
@@ -321,6 +329,7 @@
             android:id="@+id/nav_btn_payments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
