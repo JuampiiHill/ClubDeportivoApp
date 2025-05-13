@@ -19,10 +19,17 @@
     <string name="list">Estado de cuotas</string>
     <string name="activity">Asignar Actividad</string>
     <string name="icon_new_member">Icono de nuevo Socio</string>
-    <string name="icon_add_acvitivy">Icono de asignar actividad</string>
+    <string name="icon_add_activity">Icono de asignar actividad</string>
     <string name="icon_list_quotas">Icono de asignar actividad</string>
-    <string name="icon_pay_quota">icono de pago de cuota</string>
-
+    <string name="icon_home">icono de inicio</string>
+    <string name="icon_members">icono de socios</string>
+    <string name="icon_activities">icono de actividades</string>
+    <string name="icon_">icono de pago de cuota</string>
+    <string name="icon_payments">icono de pagos</string>
+    <string name="members">Socios</string>
+    <string name="home">Inicio</string>
+    <string name="icon_pay_quota">Icono de abonar cuota</string>
+    <string name="payments">Pagos</string>
 
 
 </resources>
