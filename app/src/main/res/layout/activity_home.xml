@@ -244,7 +244,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/nunito_extrabold"
-                android:text="@string/members"
+                android:text="@string/home"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp">
@@ -276,7 +276,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/nunito_extrabold"
-                android:text="@string/home"
+                android:text="@string/members"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp">
