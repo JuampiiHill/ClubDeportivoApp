@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offwhite"
+    tools:context=".ActivityListActivity">
+
+    <!-- Header with logo -->
+    <LinearLayout
+        android:id="@+id/topContainer"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:background="@drawable/top_rounded_background"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logoclub"
+            android:contentDescription="@string/logo_de_la_aplicacion"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleActivities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actividades"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/topContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- Search -->
+    <EditText
+        android:id="@+id/buscadorActividad"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Buscar actividad"
+        android:background="@drawable/search_background"
+        android:paddingHorizontal="16dp"
+        android:textColorHint="#888888"
+        android:drawableStart="@drawable/ic_search"
+        app:layout_constraintTop_toBottomOf="@id/titleActivities"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp" />
+
+    <!-- Hardcoded activity list -->
+    <LinearLayout
+        android:id="@+id/activityList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintTop_toBottomOf="@id/buscadorActividad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/member_item_background"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="CrossFit\nCupos disponibles: 5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/member_item_background"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="Yoga\nCupos disponibles: 2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/member_item_background"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="Funcional\nCupos disponibles: 7" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/member_item_background"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="Gimnasio\nCupos disponibles: 10" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

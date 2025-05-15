@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_oscuro">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="155dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/logo_de_la_aplicacion"
+        android:src="@drawable/logoclub"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Perfil -->
+    <TextView
+        android:id="@+id/textViewPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Profesor"
+        android:textColor="#FEFEFE"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Botones funcionales en cuadrícula -->
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="16dp"
+        app:columnCount="2"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnNuevoSocio"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@color/fondo_oscuro"
+            android:contentDescription="@string/desc_btn_socio"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_newmember" />
+
+        <ImageButton
+            android:id="@+id/btnAbonar"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@color/fondo_oscuro"
+            android:contentDescription="@string/desc_btn_pago"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_card" />
+
+        <ImageButton
+            android:id="@+id/btnEstado"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@color/fondo_oscuro"
+            android:contentDescription="@string/desc_btn_estado"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_list" />
+
+        <ImageButton
+            android:id="@+id/btnAsignar"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:background="@color/fondo_oscuro"
+            android:contentDescription="@string/desc_btn_actividad"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_act" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <!-- Noticias -->
+    <TextView
+        android:id="@+id/tituloNoticias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="NOTICIAS"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/gridMenu"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textoNoticias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Se ha registrado exitosamente"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/tituloNoticias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botonera inferior -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/fondo_oscuro2"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/fondo_oscuro2"
+            android:contentDescription="@string/desc_btn_home"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_home_icon" />
+
+        <ImageButton
+            android:id="@+id/btnSocios"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/fondo_oscuro2"
+            android:contentDescription="@string/desc_btn_socios"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_members_icon" />
+
+        <ImageButton
+            android:id="@+id/btnActividades"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/fondo_oscuro2"
+            android:contentDescription="@string/desc_btn_actividades"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_activity_icon" />
+
+        <ImageButton
+            android:id="@+id/btnPagos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/fondo_oscuro2"
+            android:contentDescription="@string/desc_btn_pagos"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/btn_pay_icon" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

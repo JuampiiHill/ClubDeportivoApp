@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/btn_home_icon"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/nav_members"
+        android:icon="@drawable/btn_members_icon"
+        android:title="Socios" />
+
+    <item
+        android:id="@+id/nav_activities"
+        android:icon="@drawable/btn_activity_icon"
+        android:title="Actividades" />
+
+    <item
+        android:id="@+id/nav_payments"
+        android:icon="@drawable/btn_pay_icon"
+        android:title="Pagos" />
+
+</menu>
