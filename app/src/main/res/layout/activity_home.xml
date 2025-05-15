@@ -18,6 +18,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logoclub" />
 
+
         <TextView
             android:id="@+id/user_rol"
             android:layout_width="wrap_content"
@@ -218,7 +219,6 @@
         android:id="@+id/navigation_bar"
         android:layout_width="0dp"
         android:layout_height="110dp"
-        android:layout_margin="0dp"
         android:background="@drawable/navigation_bar"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -353,6 +353,7 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp">
+
             </TextView>
         </LinearLayout>
     </LinearLayout>

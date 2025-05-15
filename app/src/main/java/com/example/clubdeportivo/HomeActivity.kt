@@ -21,13 +21,13 @@ class HomeActivity : AppCompatActivity() {
 
         val btnAddMember: LinearLayout = findViewById(R.id.btn_add_member)
         btnAddMember.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, NewMember::class.java)
             startActivity(intent)
         }
 
         val btnPay: LinearLayout = findViewById(R.id.btn_pay)
         btnPay.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, PayFee::class.java)
             startActivity(intent)
         }
 
