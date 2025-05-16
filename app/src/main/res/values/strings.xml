@@ -15,7 +15,6 @@
     <string name="text_login">¿Tienes una cuenta? Inicia sesión</string>
     <string name="user_rol">Profesor</string>
     <string name="add_new_member">Inscribir nuevo socio</string>
-    <string name="pay">Abonar cuota</string>
     <string name="list">Estado de cuotas</string>
     <string name="activity">Asignar Actividad</string>
     <string name="icon_new_member">Icono de nuevo Socio</string>
@@ -41,6 +40,8 @@
     <string name="mountPayFee">Monto a Abonar</string>
     <string name="cash">Efectivo</string>
     <string name="card">Tarjeta</string>
+    <string name="pay">Pagar</string>
+
 
 
 </resources>

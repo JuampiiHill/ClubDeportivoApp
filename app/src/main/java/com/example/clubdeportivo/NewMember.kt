@@ -3,6 +3,7 @@ package com.example.clubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +22,14 @@ class NewMember : AppCompatActivity() {
 
         val btnBack: Button = findViewById(R.id.btn_back)
         btnBack.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Eventos para el nav
+
+        val btnHome = findViewById<LinearLayout>(R.id.nav_btn_home)
+        btnHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }

@@ -39,6 +39,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logoclub" />
 
+    <!-- Esto hace que el formulario pueda ser scrolleable -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/form_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
     <LinearLayout
 
         android:id="@+id/buttom_container"
@@ -53,6 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.94">
+
 
         <LinearLayout
             android:id="@+id/login_container"
@@ -143,14 +155,15 @@
                 android:fontFamily="@font/nunito"
                 android:hint="@string/card"
                 android:textSize="16sp" />
+
             <Button
-                android:id="@+id/btn_large_in"
+                android:id="@+id/btn_pay"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="#B11719"
                 android:fontFamily="@font/nunito_extrabold"
-                android:text="@string/register"
+                android:text="@string/pay"
                 android:textColor="#E5E5E5"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -167,7 +180,9 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/navigation_bar"
@@ -178,7 +193,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_container_activity"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout

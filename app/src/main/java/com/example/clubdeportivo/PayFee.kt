@@ -20,6 +20,13 @@ class PayFee : AppCompatActivity() {
             insets
         }
 
+        val btnBack: Button = findViewById(R.id.btn_back)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Eventos para el nav
         val btnHome = findViewById<LinearLayout>(R.id.nav_btn_home)
         btnHome.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
