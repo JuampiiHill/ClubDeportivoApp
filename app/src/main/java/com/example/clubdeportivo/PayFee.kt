@@ -20,21 +20,39 @@ class PayFee : AppCompatActivity() {
             insets
         }
 
+        val btnPay: Button = findViewById(R.id.btn_pay)
+        btnPay.setOnClickListener {
+            val intent = Intent(this, SuccessPay::class.java)
+            startActivity(intent)
+        }
+
         val btnBack: Button = findViewById(R.id.btn_back)
         btnBack.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
-        // Eventos para el nav
-        val btnHome = findViewById<LinearLayout>(R.id.nav_btn_home)
-        btnHome.setOnClickListener{
+        //Eventos para el nav
+        val btnNavHome: LinearLayout = findViewById(R.id.nav_btn_home)
+        btnNavHome.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
-        val btnPayFee = findViewById<LinearLayout>(R.id.nav_btn_payments)
-        btnPayFee.setOnClickListener{
+        val btnNavMembers: LinearLayout = findViewById(R.id.nav_btn_members)
+        btnNavMembers.setOnClickListener{
+            val intent = Intent(this, MembersList::class.java)
+            startActivity(intent)
+        }
+
+        val btnNavActivity: LinearLayout = findViewById(R.id.nav_btn_activities)
+        btnNavActivity.setOnClickListener{
+            val intent = Intent(this, ActivityList::class.java)
+            startActivity(intent)
+        }
+
+        val btnNavPayments: LinearLayout = findViewById(R.id.nav_btn_payments)
+        btnNavPayments.setOnClickListener{
             val intent = Intent(this, PayFee::class.java)
             startActivity(intent)
         }

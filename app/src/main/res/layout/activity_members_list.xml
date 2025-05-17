@@ -5,182 +5,68 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121720"
-    tools:context=".NewMember">
+    android:background="@color/fondo_oscuro"
+    tools:context=".MembersList">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/topContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E5E5E5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/topBackground"
-        android:layout_width="416dp"
-        android:layout_height="719dp"
         android:background="@drawable/top_rounded_background"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="240dp"
-        android:layout_height="163dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/logo_de_la_aplicacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logoclub" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="240dp"
+            android:layout_height="163dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/logoclub"
+            android:contentDescription="@string/logo_de_la_aplicacion" />
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/form_scroll"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/topContainer"
         app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
     <LinearLayout
-
-        android:id="@+id/buttom_container"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_container"
+        android:background="@drawable/list_container"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="7dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.94">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.985">
 
-        <LinearLayout
-            android:id="@+id/new_member_container"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/login_container"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view">
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_extrabold"
+            android:paddingBottom="10dp"
+            android:text="@string/members"
+            android:textColor="#000000"
+            android:textSize="24sp">
+        </TextView>
 
-            <TextView
-                android:id="@+id/txt_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="35dp"
-                android:fontFamily="@font/nunito_bold"
-                android:text="@string/add_new_member"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+        <SearchView
+            android:id="@+id/txt_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1A232C"></SearchView>
 
-            <EditText
-                android:id="@+id/txt_name"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/name"
-                android:inputType="textEmailAddress"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/txt_surname"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/surname"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/txt_document"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/document"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/txt_date"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/date"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/txt_gender"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/gender"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/txt_email"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:autofillHints="emailAddress"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/txt_pass"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="10dp"
-                android:autofillHints="password"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/pass"
-                android:inputType="textPassword"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/btn_large_in"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#B11719"
-                android:fontFamily="@font/nunito_extrabold"
-                android:text="@string/register"
-                android:textColor="#E5E5E5"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_back"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="#A7A8A9"
-                android:fontFamily="@font/nunito_extrabold"
-                android:text="@string/back"
-                android:textColor="#E5E5E5"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <LinearLayout
@@ -192,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/topContainer"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
@@ -243,7 +129,7 @@
                 android:contentDescription="@string/icon_members"
                 android:src="@drawable/users_solid"
                 android:textAlignment="center"
-                app:tint="#E5E5E5"
+                app:tint="#C3241A"
                 tools:layout_editor_absoluteX="164dp"
                 tools:layout_editor_absoluteY="637dp" />
 
@@ -324,5 +210,6 @@
 
             </TextView>
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

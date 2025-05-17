@@ -41,7 +41,10 @@
     <string name="cash">Efectivo</string>
     <string name="card">Tarjeta</string>
     <string name="pay">Pagar</string>
-
+    <string name="success_register">¡Registro Exitoso!</string>
+    <string name="redirect">Serás redirigido al menú principal en 5 segundos...</string>
+    <string name="success_pay">¡Pago exitoso!</string>
+    <string name="activities">Actividades</string>
 
 
 </resources>

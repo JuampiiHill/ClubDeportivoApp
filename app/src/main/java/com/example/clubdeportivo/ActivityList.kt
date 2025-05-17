@@ -2,44 +2,31 @@ package com.example.clubdeportivo
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class NewMember : AppCompatActivity() {
+class ActivityList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_new_member)
+        setContentView(R.layout.activity_list)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val btnRegister: Button = findViewById(R.id.btn_large_in)
-        btnRegister.setOnClickListener {
-            val intent = Intent(this, SuccessRegister::class.java)
-            startActivity(intent)
-        }
-
-        val btnBack: Button = findViewById(R.id.btn_back)
-        btnBack.setOnClickListener{
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
-
         //Eventos para el nav
-        val btnNavHome: LinearLayout = findViewById(R.id.nav_btn_home)
+        val btnNavHome = findViewById<LinearLayout>(R.id.nav_btn_home)
         btnNavHome.setOnClickListener{
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
-        val btnNavMembers: LinearLayout = findViewById(R.id.nav_btn_members)
+        val btnNavMembers = findViewById<LinearLayout>(R.id.nav_btn_members)
         btnNavMembers.setOnClickListener{
             val intent = Intent(this, MembersList::class.java)
             startActivity(intent)
@@ -51,7 +38,7 @@ class NewMember : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnNavPayments: LinearLayout = findViewById(R.id.nav_btn_payments)
+        val btnNavPayments = findViewById<LinearLayout>(R.id.nav_btn_payments)
         btnNavPayments.setOnClickListener{
             val intent = Intent(this, PayFee::class.java)
             startActivity(intent)
