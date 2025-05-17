@@ -36,8 +36,19 @@ class MembersList : AppCompatActivity() {
 
         // Setup RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
-        socioAdapter = SocioAdapter(socios)
+
+
+        socioAdapter = SocioAdapter(socios) { socio ->
+            val intent = Intent(this, ActivityCarnet::class.java)
+            intent.putExtra("nombre", socio.nombre)
+            intent.putExtra("estado", socio.estadoCuota)
+            startActivity(intent)
+        }
+
+
         recyclerView.adapter = socioAdapter
+
+
 
         // Navegación inferior
         findViewById<LinearLayout>(R.id.nav_btn_home).setOnClickListener {

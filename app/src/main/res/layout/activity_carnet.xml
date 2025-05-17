@@ -67,14 +67,15 @@
 
 
             <TextView
+                android:id="@+id/nombreUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="Nombre de usuario"
-                android:textSize="25sp">
-
-            </TextView>
+                android:textSize="25sp"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -110,7 +111,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/estadoCuota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

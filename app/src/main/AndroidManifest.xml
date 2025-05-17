@@ -12,21 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubDeportivo"
         tools:targetApi="31">
+
         <activity
-<<<<<<< HEAD
-            android:name=".activity_carnet"
-=======
-            android:name=".ActivityAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityItem"
-            android:exported="false" />
-        <activity
-            android:name=".SocioAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".SocioItem"
->>>>>>> be255aa (listado de actividades y listado de socios)
+            android:name=".ActivityCarnet"
             android:exported="false" />
         <activity
             android:name=".AddActivity"
