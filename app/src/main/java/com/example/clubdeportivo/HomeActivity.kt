@@ -33,22 +33,17 @@ class HomeActivity : AppCompatActivity() {
 
         val btListQuotas: LinearLayout = findViewById(R.id.btn_list_quotas)
         btListQuotas.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MembersList::class.java)
             startActivity(intent)
         }
 
         val btnAddActivity: LinearLayout = findViewById(R.id.btn_add_activity)
         btnAddActivity.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ActivityList::class.java)
             startActivity(intent)
         }
 
         //Eventos para el nav
-        val btnNavHome: LinearLayout = findViewById(R.id.nav_btn_home)
-        btnNavHome.setOnClickListener{
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
 
         val btnNavMembers: LinearLayout = findViewById(R.id.nav_btn_members)
         btnNavMembers.setOnClickListener{

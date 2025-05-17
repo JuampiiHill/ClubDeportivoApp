@@ -68,23 +68,20 @@
                 android:backgroundTint="#A7A8A9"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/register"
-                android:textAlignment="viewEnd"
+                android:textAlignment="textEnd"
                 android:textColor="#E5E5E5"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"/>
 
             <Button
                 android:id="@+id/btn_in"
-                android:layout_width="162dp"
+                android:layout_width="177dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="fill"
                 android:backgroundTint="#B11719"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/text_in"
                 android:textAlignment="center"
                 android:textColor="#E5E5E5"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"/>
 
         </FrameLayout>
 

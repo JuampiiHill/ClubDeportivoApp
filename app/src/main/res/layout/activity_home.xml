@@ -229,17 +229,18 @@
 
         <LinearLayout
             android:id="@+id/nav_btn_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:contentDescription="@string/icon_home"
                 android:src="@drawable/house_solid"
                 app:tint="#C3241A"
@@ -247,13 +248,13 @@
                 tools:layout_editor_absoluteY="637dp" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/home"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp">
+                android:textSize="18sp">
 
             </TextView>
 
@@ -261,32 +262,32 @@
 
         <LinearLayout
             android:id="@+id/nav_btn_members"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:contentDescription="@string/icon_members"
                 android:src="@drawable/users_solid"
-                android:textAlignment="center"
                 app:tint="#E5E5E5"
                 tools:layout_editor_absoluteX="164dp"
                 tools:layout_editor_absoluteY="637dp" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/members"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp">
+                android:textSize="18sp">
 
             </TextView>
 
@@ -294,65 +295,64 @@
 
         <LinearLayout
             android:id="@+id/nav_btn_activities"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:contentDescription="@string/icon_activities"
                 android:src="@drawable/trophy_solid"
-                android:textAlignment="center"
                 app:tint="#E5E5E5"
                 tools:layout_editor_absoluteX="164dp"
                 tools:layout_editor_absoluteY="637dp" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/activities"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp">
-
-            </TextView>
+                android:textSize="18sp"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/nav_btn_payments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
                 android:contentDescription="@string/icon_pay_quota"
+                android:filterTouchesWhenObscured="true"
                 android:src="@drawable/money_check_dollar_solid"
-                android:textAlignment="center"
                 app:tint="#E5E5E5"
                 tools:layout_editor_absoluteX="164dp"
                 tools:layout_editor_absoluteY="637dp" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/payments"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp">
+                android:textSize="18sp">
 
             </TextView>
         </LinearLayout>
