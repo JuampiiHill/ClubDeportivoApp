@@ -50,12 +50,5 @@ class PayFee : AppCompatActivity() {
             val intent = Intent(this, ActivityList::class.java)
             startActivity(intent)
         }
-
-        val btnNavPayments: LinearLayout = findViewById(R.id.nav_btn_payments)
-        btnNavPayments.setOnClickListener{
-            val intent = Intent(this, PayFee::class.java)
-            startActivity(intent)
-        }
-
     }
 }

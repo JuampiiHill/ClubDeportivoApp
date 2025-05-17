@@ -102,16 +102,18 @@
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:contentDescription="@string/icon_home"
                 android:src="@drawable/house_solid"
                 app:tint="#E5E5E5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
                 android:text="@string/home"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!-- Socios (activo) -->
@@ -129,16 +131,18 @@
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:contentDescription="@string/icon_members"
                 android:src="@drawable/users_solid"
                 app:tint="#C3241A" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
                 android:text="@string/members"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!-- Actividades -->
@@ -156,16 +160,18 @@
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:contentDescription="@string/icon_activities"
                 android:src="@drawable/trophy_solid"
                 app:tint="#E5E5E5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
                 android:text="@string/activities"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!-- Pagos -->
@@ -183,16 +189,19 @@
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:contentDescription="@string/icon_payments"
+                android:filterTouchesWhenObscured="true"
                 android:src="@drawable/money_check_dollar_solid"
                 app:tint="#E5E5E5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
                 android:text="@string/payments"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -55,10 +55,6 @@ class MembersList : AppCompatActivity() {
             startActivity(Intent(this, HomeActivity::class.java))
         }
 
-        findViewById<LinearLayout>(R.id.nav_btn_members).setOnClickListener {
-            // No hace falta reiniciar la misma pantalla
-        }
-
         findViewById<LinearLayout>(R.id.nav_btn_activities).setOnClickListener {
             startActivity(Intent(this, ActivityList::class.java))
         }

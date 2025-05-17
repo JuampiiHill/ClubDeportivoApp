@@ -39,12 +39,6 @@ class NewMember : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val btnNavMembers: LinearLayout = findViewById(R.id.nav_btn_members)
-        btnNavMembers.setOnClickListener{
-            val intent = Intent(this, MembersList::class.java)
-            startActivity(intent)
-        }
-
         val btnNavActivity: LinearLayout = findViewById(R.id.nav_btn_activities)
         btnNavActivity.setOnClickListener{
             val intent = Intent(this, ActivityList::class.java)
