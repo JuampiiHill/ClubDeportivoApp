@@ -1,6 +1,5 @@
 package com.example.clubdeportivo
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.content.res.Resources
@@ -8,15 +7,16 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -71,11 +71,23 @@ class LoginActivity : AppCompatActivity() {
             // lógica de ingreso
         }
 
-        //EVENTO PARA LLEVARNOS AL HOME DE LA APP. ACA DEBERIA PONERSE LA LOGICA DE BASE DE DATOS
-        val btnLargeIn: Button = findViewById(R.id.btn_large_in)
+        val dbHelper = UserDBHelper(this)
+
+        val email = findViewById<EditText>(R.id.email)
+        val pass = findViewById<EditText>(R.id.txt_pass)
+        val btnLargeIn = findViewById<Button>(R.id.btn_large_in)
+
+        val intent = Intent(this, HomeActivity::class.java)
+
         btnLargeIn.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            val emailString = email.text.toString().trim()
+            val passString = pass.text.toString().trim()
+
+            if(dbHelper.login(emailString, passString)){
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Email o contraseña incorrecta", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

@@ -1,22 +1,17 @@
 <resources>
-    <string name="app_name">ClubDeportivo</string>
+
+    //Textos
     <string name="welcome_message">BIENVENIDO</string>
     <string name="welcome">Bienvenido a Club Deportivo</string>
-    <string name="logo_de_la_aplicacion">Logo</string>
-    <string name="text_in">Ingresar</string>
-    <string name="text_account">¿No tienes cuenta? Registrate</string>
-    <string name="register">Registrarse</string>
-    <string name="text_forgot">Olvidé mi contraseña</string>
-    <string name="password">Contraseña</string>
-    <string name="email">E-mail</string>
-    <string name="name">Nombre</string>
-    <string name="surname">Apellido</string>
-    <string name="repeat_Pass">Repetir contraseña</string>
-    <string name="text_login">¿Tienes una cuenta? Inicia sesión</string>
-    <string name="user_rol">Profesor</string>
     <string name="add_new_member">Inscribir nuevo socio</string>
-    <string name="list">Estado de cuotas</string>
-    <string name="activity">Asignar Actividad</string>
+
+    //Botones
+    <string name="text_in">Ingresar</string>
+    <string name="register">Registrarse</string>
+
+    // Imputs
+
+    //Iconos
     <string name="icon_new_member">Icono de nuevo Socio</string>
     <string name="icon_add_activity">Icono de asignar actividad</string>
     <string name="icon_list_quotas">Icono de asignar actividad</string>
@@ -25,6 +20,20 @@
     <string name="icon_activities">icono de actividades</string>
     <string name="icon_">icono de pago de cuota</string>
     <string name="icon_payments">icono de pagos</string>
+
+    <string name="app_name">ClubDeportivo</string>
+    <string name="logo_de_la_aplicacion">Logo</string>
+    <string name="text_account">¿No tienes cuenta? Registrate</string>
+    <string name="text_forgot">Olvidé mi contraseña</string>
+    <string name="password">Contraseña</string>
+    <string name="email">E-mail</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellido</string>
+    <string name="repeat_Pass">Repetir contraseña</string>
+    <string name="text_login">¿Tienes una cuenta? Inicia sesión</string>
+    <string name="user_rol">Profesor</string>
+    <string name="list">Estado de cuotas</string>
+    <string name="activity">Asignar Actividad</string>
     <string name="members">Socios</string>
     <string name="home">Inicio</string>
     <string name="icon_pay_quota">Icono de abonar cuota</string>
