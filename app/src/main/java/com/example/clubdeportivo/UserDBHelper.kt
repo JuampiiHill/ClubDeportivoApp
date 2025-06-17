@@ -23,13 +23,15 @@ class UserDBHelper(context: Context): SQLiteOpenHelper(context, "UsersDB", null,
     }
 
     fun login(name: String, pass: String): Boolean {
-        var db = readableDatabase
-        var cursor = db.rawQuery(
+        val db = readableDatabase
+        val cursor = db.rawQuery(
             "SELECT * FROM users WHERE name=? AND password=?",
             arrayOf(name, pass)
         )
 
-        var exist = cursor.count > 0
+        val exist = cursor.count > 0
+        cursor.close()
+        db.close()
         return exist
     }
 }

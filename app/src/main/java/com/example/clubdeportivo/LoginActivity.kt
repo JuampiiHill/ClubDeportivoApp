@@ -77,14 +77,15 @@ class LoginActivity : AppCompatActivity() {
         val pass = findViewById<EditText>(R.id.txt_pass)
         val btnLargeIn = findViewById<Button>(R.id.btn_large_in)
 
-        val intent = Intent(this, HomeActivity::class.java)
 
         btnLargeIn.setOnClickListener {
             val emailString = email.text.toString().trim()
             val passString = pass.text.toString().trim()
 
             if(dbHelper.login(emailString, passString)){
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, "Email o contraseña incorrecta", Toast.LENGTH_SHORT).show()
             }
