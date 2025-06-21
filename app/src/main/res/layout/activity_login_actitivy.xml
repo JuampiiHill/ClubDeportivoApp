@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121720"
+    tools:context=".LoginActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E5E5E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/topBackground"
+        android:layout_width="416dp"
+        android:layout_height="719dp"
+        android:background="@drawable/top_rounded_background"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="288dp"
+        android:layout_height="247dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/logo_de_la_aplicacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoclub" />
+
+
+    <LinearLayout
+
+        android:id="@+id/buttom_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_container"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.94">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_gravity="end"
+                android:backgroundTint="#A7A8A9"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/register"
+                android:textAlignment="textEnd"
+                android:textColor="#E5E5E5"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/btn_in"
+                android:layout_width="177dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="#B11719"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/text_in"
+                android:textAlignment="center"
+                android:textColor="#E5E5E5"
+                android:textSize="18sp"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/login_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_container"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view">
+
+            <TextView
+                android:id="@+id/txt_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="@string/welcome"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="30dp"
+                android:autofillHints="emailAddress"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/txt_pass"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:autofillHints="password"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_large_in"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#B11719"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/text_in"
+                android:textColor="#E5E5E5"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/nunito"
+                android:text="@string/text_forgot"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_container"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view">
+
+            <TextView
+                android:id="@+id/txt_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="@string/register"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/name"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/txt_surname"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/surname"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="15dp"
+                android:autofillHints="emailAddress"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="15dp"
+                android:autofillHints="password"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/repeatPass"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:autofillHints="password"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/repeat_Pass"
+                android:inputType="textPassword"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_registerNewMember"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#B11719"
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="@string/register"
+                android:textColor="#E5E5E5"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_account"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/nunito"
+                android:text="@string/text_login"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
