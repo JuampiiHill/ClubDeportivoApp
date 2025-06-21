@@ -1,5 +1,6 @@
 package com.example.clubdeportivo
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -63,5 +64,12 @@ class AssignActivityActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al asignar actividad", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val btnBack: Button = findViewById(R.id.btn_back)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 }

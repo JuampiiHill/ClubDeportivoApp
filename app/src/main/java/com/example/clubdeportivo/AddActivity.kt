@@ -24,13 +24,5 @@ class AddActivity : AppCompatActivity() {
             val intent = Intent(this, SuccessRegister::class.java)
             startActivity(intent)
         }
-
-        val btnBack: Button = findViewById(R.id.btn_back)
-        btnBack.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
-
-
     }
 }

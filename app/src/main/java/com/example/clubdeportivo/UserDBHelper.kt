@@ -7,7 +7,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 6) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 9) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -45,6 +45,16 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
                 cupo_disponible INTEGER
             )
         """.trimIndent())
+
+            db.execSQL("""
+            INSERT INTO actividades (nombre, dia, horario, cupo_disponible) VALUES
+            ('Fútbol', 'Lunes', '18:00', 10),
+            ('Natación', 'Martes', '16:00', 8),
+            ('Gimnasia', 'Miércoles', '19:00', 15),
+            ('Básquet', 'Jueves', '17:00', 12),
+            ('Yoga', 'Viernes', '10:00', 10),
+            ('Musculacion', 'Lunes a Viernes', '7:00 a 22:00', 0)
+    """.trimIndent())
 
         db.execSQL("""
             CREATE TABLE IF NOT EXISTS inscripciones (
@@ -320,11 +330,6 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
             db.execSQL(
                 "UPDATE actividades SET cupo_disponible = cupo_disponible - 1 WHERE id = ?",
                 arrayOf(idActividad)
-            )
-
-            db.execSQL(
-                "INSERT INTO socio_actividad (socio_dni, actividad_nombre) VALUES (?, ?)",
-                arrayOf(documento, nombreActividad)
             )
 
             db.setTransactionSuccessful()

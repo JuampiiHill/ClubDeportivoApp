@@ -25,6 +25,11 @@ class NewMember : AppCompatActivity() {
 
         val btnRegister: Button = findViewById(R.id.btn_large_in)
         btnRegister.setOnClickListener {
+            if (!switchApto.isChecked) {
+                Toast.makeText(this, "No se puede registrar sin apto físico", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
             val exito = dbHelper.insertarSocio(
                 nombre = inputNombre.text.toString(),
                 apellido = inputApellido.text.toString(),
@@ -53,6 +58,9 @@ class NewMember : AppCompatActivity() {
         // Eventos de navegación inferior
         findViewById<LinearLayout>(R.id.nav_btn_home).setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
+        }
+        findViewById<LinearLayout>(R.id.nav_btn_members).setOnClickListener {
+            startActivity(Intent(this, MembersList::class.java))
         }
 
         findViewById<LinearLayout>(R.id.nav_btn_activities).setOnClickListener {
