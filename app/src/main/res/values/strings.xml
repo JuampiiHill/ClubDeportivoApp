@@ -7,6 +7,7 @@
     <string name="activity_name">Nombre de la actividad</string>
     <string name="activity">Asignar Actividad</string>
     <string name="document_in">Ingrese DNI del socio</string>
+    <string name="registerTxt">Abrir formulario de registro</string>
 
 
     //Botones

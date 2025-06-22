@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
-import com.example.clubdeportivo.UserDBHelper
-
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.widget.TextView
+import androidx.core.graphics.toColorInt
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,12 +24,36 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        //evento para que al hacer click en el boton nos lleve al login
+        //evento para que al hacer click en el botón nos lleve al login
         val button: Button = findViewById(R.id.btn_in)
         button.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
+        val registerText = findViewById<TextView>(R.id.register)
+        registerText.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("start_with_register", true)
+            startActivity(intent)
+        }
+
+        //Función para darle color rojo al texto Registrate
+        val fullText = registerText.text.toString()
+        val palabraClave = "Registrate"
+        val start = fullText.indexOf(palabraClave)
+
+        if (start != -1) {
+            val end = start + palabraClave.length
+            val spannable = SpannableString(fullText)
+
+            spannable.setSpan(
+                ForegroundColorSpan("#B11719".toColorInt()),
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            registerText.text = spannable
+        }
     }
 }

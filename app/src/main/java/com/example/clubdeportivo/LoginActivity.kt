@@ -3,16 +3,21 @@ package com.example.clubdeportivo
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.content.res.Resources
-import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColorInt
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -38,24 +43,51 @@ class LoginActivity : AppCompatActivity() {
             val paramsIn = btnIn.layoutParams
 
             if (isRegisterActive) {
-                btnRegister.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#B11719")))
-                btnIn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A7A8A9")))
+                //alternar colores
+                btnRegister.setBackgroundTintList(ColorStateList.valueOf("#B11719".toColorInt()))
+                btnIn.setBackgroundTintList(ColorStateList.valueOf("#A7A8A9".toColorInt()))
+
                 paramsIn.width = FrameLayout.LayoutParams.MATCH_PARENT
+                paramsIn.height = dpToPx(58)
                 btnIn.textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-                paramsRegister.width = dpToPx(150)
-                btnRegister.z = 1f
-                btnIn.z = 0f
+                btnIn.gravity = Gravity.START or Gravity.CENTER_VERTICAL
+
+                btnIn.layoutParams = paramsIn
+                btnIn.requestLayout()
+                btnIn.invalidate()
+
+                btnRegister.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                paramsRegister.height = dpToPx(58)
+                btnRegister.gravity = Gravity.CENTER
+                paramsRegister.width = dpToPx(177)
+
+                //hacer visible los diferentes formularios
                 layoutRegister.visibility = View.VISIBLE
                 layoutLogin.visibility = View.GONE
+
+                //traer el btn_register al frente
+                btnRegister.bringToFront()
+                btnIn.z = 0f
             } else {
-                btnRegister.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A7A8A9")))
-                btnIn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#B11719")))
+                //alternar colores
+                btnRegister.setBackgroundTintList(ColorStateList.valueOf("#A7A8A9".toColorInt()))
+                btnIn.setBackgroundTintList(ColorStateList.valueOf("#B11719".toColorInt()))
+
                 paramsRegister.width = FrameLayout.LayoutParams.MATCH_PARENT
-                paramsIn.width = dpToPx(160)
-                btnIn.z = 1f
-                btnRegister.z = 0f
+                paramsRegister.height = dpToPx(58)
+                btnRegister.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                btnRegister.gravity = Gravity.END or Gravity.CENTER_VERTICAL
+                btnIn.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                btnIn.gravity = Gravity.CENTER
+                paramsIn.width = dpToPx(177)
+
+                //hacer visible los diferentes formularios
                 layoutRegister.visibility = View.GONE
                 layoutLogin.visibility = View.VISIBLE
+
+                //traer btn_in al frente
+                btnIn.z = 1f
+                btnRegister.z = 0f
             }
             btnRegister.layoutParams = paramsRegister
             btnIn.layoutParams = paramsIn
@@ -63,12 +95,40 @@ class LoginActivity : AppCompatActivity() {
 
         btnRegister.setOnClickListener {
             toggleButtons(true)
-            // lógica de registro
         }
 
         btnIn.setOnClickListener {
             toggleButtons(false)
-            // lógica de ingreso
+        }
+
+        // Al hacer click en el "¿No tienes cuenta? Registrate" nos lleve al formulario de registro
+        val startWithRegister = intent.getBooleanExtra("start_with_register", false)
+        if (startWithRegister) {
+           btnRegister.post {
+              toggleButtons(true)
+          }
+        }
+
+
+        val account = findViewById<TextView>(R.id.txt_account)
+        val fullText = account.text.toString()
+        val palabraClave = "Inicia sesión"
+        val start = fullText.indexOf(palabraClave)
+
+        if(start != -1){
+            val end = start + palabraClave.length
+            val spannable = SpannableString(fullText)
+            spannable.setSpan(
+                ForegroundColorSpan("#B11719".toColorInt()),
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            account.text = spannable
+        }
+
+        account.setOnClickListener {
+            toggleButtons(false)
         }
 
         val dbHelper = UserDBHelper(this)
@@ -84,11 +144,11 @@ class LoginActivity : AppCompatActivity() {
         btnRegisterMember.setOnClickListener {
             val nameString = name.text.toString().trim()
             val surnameString = surname.text.toString().trim()
-            val txtEmailstring = txtEmail.text.toString().trim()
+            val txtEmailString = txtEmail.text.toString().trim()
             val passwordString = txtPassword.text.toString().trim()
             val repeatPasswordString = repeatPassword.text.toString().trim()
 
-            if (nameString.isEmpty() || surnameString.isEmpty() || txtEmailstring.isEmpty() || passwordString.isEmpty() || repeatPasswordString.isEmpty()) {
+            if (nameString.isEmpty() || surnameString.isEmpty() || txtEmailString.isEmpty() || passwordString.isEmpty() || repeatPasswordString.isEmpty()) {
                 Toast.makeText(this, "Los campos son obligatorios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -97,7 +157,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
-                val success = dbHelper.register(nameString, surnameString, txtEmailstring, passwordString)
+                val success = dbHelper.register(nameString, surnameString, txtEmailString, passwordString)
                 if (success) {
                     Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
                 } else {

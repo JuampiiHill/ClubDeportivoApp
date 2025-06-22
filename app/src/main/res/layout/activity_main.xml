@@ -55,16 +55,20 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
         android:clickable="true"
+        android:contentDescription="@string/registerTxt"
+        android:focusable="true"
         android:fontFamily="@font/nunito"
+        android:importantForAccessibility="yes"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
         android:text="@string/text_account"
-        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textColorLink="#B11719"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_in" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
