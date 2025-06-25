@@ -3,11 +3,14 @@ package com.example.clubdeportivo
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.icu.util.Calendar
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 9) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 12) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -20,19 +23,24 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
             )
         """.trimIndent())
 
+        db.execSQL("""INSERT INTO users (name, surname, email, password)
+            VALUES ("Super", "Usuario", "admin", "1234")""".trimMargin())
+
+
+
         db.execSQL("""
-            CREATE TABLE IF NOT EXISTS socios (
+            CREATE TABLE IF NOT EXISTS members (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nombre TEXT,
-                apellido TEXT,
-                documento TEXT UNIQUE,
-                nacimiento TEXT,
-                genero TEXT,
+                name TEXT,
+                surname TEXT,
+                document TEXT UNIQUE,
+                dateOfBirth TEXT,
+                gender TEXT,
                 email TEXT,
                 apto INTEGER,
-                pago INTEGER,
-                vencimiento TEXT,
-                metodo_pago TEXT
+                pay INTEGER,
+                expirationDate TEXT,
+                paymentMethod TEXT
             )
         """.trimIndent())
 
@@ -72,7 +80,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS users")
-        db.execSQL("DROP TABLE IF EXISTS socios")
+        db.execSQL("DROP TABLE IF EXISTS members")
         db.execSQL("DROP TABLE IF EXISTS actividades")
         db.execSQL("DROP TABLE IF EXISTS inscripciones")
 
@@ -95,25 +103,30 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         }
     }
 
-    fun login(email: String, pass: String): Boolean {
+
+
+    fun login(email: String, pass: String): String? {
         val db = readableDatabase
         val cursor = db.rawQuery(
             "SELECT * FROM users WHERE email=? AND password=?",
             arrayOf(email, pass)
         )
-        val exist = cursor.count > 0
+        var userName: String? = null
+        if (cursor.moveToFirst()) {
+            userName = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+        }
         cursor.close()
         db.close()
-        return exist
+        return userName
     }
 
-    fun getAllSocios(): List<Socio> {
-        val lista = mutableListOf<Socio>()
+    fun getAllMembers(): List<Socio> {
+        val list = mutableListOf<Socio>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM socios", null)
+        val cursor = db.rawQuery("SELECT * FROM members", null)
 
         while (cursor.moveToNext()) {
-            lista.add(
+            list.add(
                 Socio(
                     id = cursor.getInt(0),
                     nombre = cursor.getString(1),
@@ -129,9 +142,8 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
                 )
             )
         }
-
         cursor.close()
-        return lista
+        return list
     }
 
     fun getSocioPorDocumento(documento: String): Socio? {
@@ -161,37 +173,39 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun insertarSocio(
-        nombre: String,
-        apellido: String,
-        documento: String,
-        nacimiento: String,
-        genero: String,
+    fun addMember(
+        name: String,
+        surname: String,
+        document: String,
+        dateOfBirth: String,
+        gender: String,
         email: String,
         apto: Boolean,
-        pago: Boolean
+        pay: Boolean
     ): Boolean {
         val db = writableDatabase
         return try {
-            val hoy = java.time.LocalDate.now()
-            val vencimiento = hoy.plusDays(30).toString()
+            val calendar = Calendar.getInstance()
+            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            calendar.add(Calendar.MONTH, 1)
+            val expirationDate = dateFormat.format(calendar.time)
 
             db.execSQL(
                 """
-                INSERT INTO socios 
-                (nombre, apellido, documento, nacimiento, genero, email, apto, pago, vencimiento, metodo_pago)
+                INSERT INTO members 
+                (name, surname, document, dateOfBirth, gender, email, apto, pay, expirationDate, paymentMethod)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """.trimIndent(),
                 arrayOf(
-                    nombre,
-                    apellido,
-                    documento,
-                    nacimiento,
-                    genero,
+                    name,
+                    surname,
+                    document,
+                    dateOfBirth,
+                    gender,
                     email,
                     if (apto) 1 else 0,
-                    if (pago) 1 else 0,
-                    vencimiento,
+                    if (pay) 1 else 0,
+                    expirationDate,
                     ""
                 )
             )

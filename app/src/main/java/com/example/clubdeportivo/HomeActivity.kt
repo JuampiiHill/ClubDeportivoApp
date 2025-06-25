@@ -3,6 +3,7 @@ package com.example.clubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +20,12 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Mensaje de bienvenida del usuario ingresado
+        val userName = intent.getStringExtra("nombre_usuario")
+        val textUser = findViewById<TextView>(R.id.user_rol)
+        val msg = getString(R.string.welcome_user, userName)
+        textUser.text = msg
 
         val btnAddMember = findViewById<LinearLayout>(R.id.btn_add_member)
         btnAddMember.setOnClickListener{
@@ -44,8 +51,8 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Eventos para el nav
 
+        //Eventos para el nav
         val btnNavMembers: LinearLayout = findViewById(R.id.nav_btn_members)
         btnNavMembers.setOnClickListener{
             val intent = Intent(this, MembersList::class.java)

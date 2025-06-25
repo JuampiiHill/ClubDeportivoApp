@@ -14,7 +14,7 @@ class MembersList : AppCompatActivity() {
     private lateinit var dbHelper: UserDBHelper
     private lateinit var listView: ListView
     private lateinit var searchView: SearchView
-    private lateinit var socios: List<Socio>
+    private lateinit var members: List<Socio>
     private lateinit var adapter: SocioAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,15 +25,16 @@ class MembersList : AppCompatActivity() {
         listView = findViewById(R.id.listViewSocios)
         searchView = findViewById(R.id.txt_search)
 
-        socios = dbHelper.getAllSocios()
-        Log.d("SOCIOS", "Cantidad: ${socios.size}")
+        members = dbHelper.getAllMembers()
+        Log.d("SOCIOS", "Cantidad: ${members.size}")
 
-        adapter = SocioAdapter(this, socios)
+        adapter = SocioAdapter(this, members)
         listView.adapter = adapter
 
-        // Navegación al carnet al hacer clic en un socio
+
+        // Navegación al carnet al hacer click en un socio
         listView.setOnItemClickListener { _, _, position, _ ->
-            val socio = socios[position]
+            val socio = members[position]
             val intent = Intent(this, ActivityCarnet::class.java)
             intent.putExtra("documento", socio.documento)
             startActivity(intent)
@@ -44,15 +45,13 @@ class MembersList : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?) = false
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                val filtrados = socios.filter {
+                val filtrados = members.filter {
                     it.apellido.contains(newText.orEmpty(), ignoreCase = true)
                 }
                 listView.adapter = SocioAdapter(this@MembersList, filtrados)
                 return true
             }
         })
-
-
 
         // Barra de navegación inferior
         findViewById<LinearLayout>(R.id.nav_btn_home).setOnClickListener {
@@ -68,4 +67,3 @@ class MembersList : AppCompatActivity() {
         }
     }
 }
-

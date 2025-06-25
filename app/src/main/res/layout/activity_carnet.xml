@@ -31,22 +31,20 @@
 
     <!-- Logo superior -->
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="190dp"
-        android:layout_height="107dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/logo"
+        android:layout_width="240dp"
+        android:layout_height="163dp"
         android:contentDescription="@string/logo_de_la_aplicacion"
+        android:src="@drawable/logoclub"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logoclub" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Contenedor con scroll -->
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/imageView4"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

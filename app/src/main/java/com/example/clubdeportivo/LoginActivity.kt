@@ -179,8 +179,11 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Los campos son obligatorios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(dbHelper.login(emailString, passString)){
+            val userName = dbHelper.login(emailString, passString)
+            if(userName != null) {
+
                 val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("nombre_usuario", userName)
                 startActivity(intent)
                 finish()
             } else {

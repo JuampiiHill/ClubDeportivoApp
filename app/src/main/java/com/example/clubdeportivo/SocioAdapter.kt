@@ -1,5 +1,4 @@
 import android.content.Context
-import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.toColorInt
 import com.example.clubdeportivo.R
 import com.example.clubdeportivo.Socio
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class SocioAdapter(private val context: Context, private val socios: List<Socio>) : BaseAdapter() {
 
@@ -18,7 +20,7 @@ class SocioAdapter(private val context: Context, private val socios: List<Socio>
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.activity_socio_item, parent, false)
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.activity_socio_item, parent, false)
         val socio = socios[position]
 
         val nombreTextView = view.findViewById<TextView>(R.id.nombreSocio)
@@ -26,21 +28,19 @@ class SocioAdapter(private val context: Context, private val socios: List<Socio>
 
         nombreTextView.text = "${socio.apellido}, ${socio.nombre}"
 
-        // Validación por vencimiento
-        val hoy = java.time.LocalDate.now()
-        val fechaVencimiento = java.time.LocalDate.parse(socio.vencimiento)
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+        val today = LocalDate.now()
+        val expirationDate = LocalDate.parse(socio.vencimiento,formatter)
 
-        val estaVencido = hoy.isAfter(fechaVencimiento)
+        val isExpirate = today.isAfter(expirationDate)
 
-        if (estaVencido || !socio.pago) {
+        if(isExpirate || !socio.pago) {
             estadoTextView.text = "Estado de cuota: Vencida"
-            estadoTextView.setTextColor(android.graphics.Color.parseColor("#e74c3c"))
+            estadoTextView.setTextColor("#e74c3c".toColorInt())
         } else {
             estadoTextView.text = "Estado de cuota: Paga"
-            estadoTextView.setTextColor(android.graphics.Color.parseColor("#27ae60"))
+            estadoTextView.setTextColor("#27ae60".toColorInt())
         }
-
         return view
     }
-
 }

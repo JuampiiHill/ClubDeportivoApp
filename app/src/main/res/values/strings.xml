@@ -2,12 +2,15 @@
 
     //Textos
     <string name="welcome_message">BIENVENIDO</string>
+    <string name="welcome_user">Bienvenido,\n%1$s</string>
     <string name="welcome">Bienvenido a Club Deportivo</string>
     <string name="add_new_member">Inscribir nuevo socio</string>
     <string name="activity_name">Nombre de la actividad</string>
     <string name="activity">Asignar Actividad</string>
     <string name="document_in">Ingrese DNI del socio</string>
     <string name="registerTxt">Abrir formulario de registro</string>
+    <string name="apto">¿Presentó apto físico?</string>
+    <string name="quote">¿Pagó la cuota?</string>
 
 
     //Botones
@@ -46,7 +49,6 @@
     <string name="document">Documento</string>
     <string name="date">Fecha de Nacimiento</string>
     <string name="gender">Género</string>
-    <string name="apto">Apto Físico</string>
     <string name="pass">Pagó</string>
     <string name="back">Volver</string>
     <string name="payFee">Abonar Cuota</string>
