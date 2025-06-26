@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 12) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 13) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -25,8 +25,6 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
 
         db.execSQL("""INSERT INTO users (name, surname, email, password)
             VALUES ("Super", "Usuario", "admin", "1234")""".trimMargin())
-
-
 
         db.execSQL("""
             CREATE TABLE IF NOT EXISTS members (
@@ -103,8 +101,6 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         }
     }
 
-
-
     fun login(email: String, pass: String): String? {
         val db = readableDatabase
         val cursor = db.rawQuery(
@@ -120,25 +116,25 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         return userName
     }
 
-    fun getAllMembers(): List<Socio> {
-        val list = mutableListOf<Socio>()
+    fun getAllMembers(): List<Member> {
+        val list = mutableListOf<Member>()
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT * FROM members", null)
 
         while (cursor.moveToNext()) {
             list.add(
-                Socio(
+                Member(
                     id = cursor.getInt(0),
-                    nombre = cursor.getString(1),
-                    apellido = cursor.getString(2),
-                    documento = cursor.getString(3),
-                    nacimiento = cursor.getString(4),
-                    genero = cursor.getString(5),
+                    name = cursor.getString(1),
+                    surname = cursor.getString(2),
+                    document = cursor.getString(3),
+                    dateOfBirth = cursor.getString(4),
+                    gender = cursor.getString(5),
                     email = cursor.getString(6),
                     apto = cursor.getInt(7) == 1,
-                    pago = cursor.getInt(8) == 1,
-                    vencimiento = cursor.getString(9),
-                    metodoPago = cursor.getString(10)
+                    pay = cursor.getInt(8) == 1,
+                    expirationDate = cursor.getString(9),
+                    paymentMethod = cursor.getString(10)
                 )
             )
         }
@@ -146,23 +142,23 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         return list
     }
 
-    fun getSocioPorDocumento(documento: String): Socio? {
+    fun getSocioPorDocumento(documento: String): Member? {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT * FROM socios WHERE documento = ?", arrayOf(documento))
 
         if (cursor.moveToFirst()) {
-            val socio = Socio(
+            val socio = Member(
                 id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
-                nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
-                apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
-                documento = cursor.getString(cursor.getColumnIndexOrThrow("documento")),
-                nacimiento = cursor.getString(cursor.getColumnIndexOrThrow("nacimiento")),
-                genero = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
+                name = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                surname = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                document = cursor.getString(cursor.getColumnIndexOrThrow("documento")),
+                dateOfBirth = cursor.getString(cursor.getColumnIndexOrThrow("nacimiento")),
+                gender = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
                 email = cursor.getString(cursor.getColumnIndexOrThrow("email")),
                 apto = cursor.getInt(cursor.getColumnIndexOrThrow("apto")) == 1,
-                pago = cursor.getInt(cursor.getColumnIndexOrThrow("pago")) == 1,
-                vencimiento = cursor.getString(cursor.getColumnIndexOrThrow("vencimiento")),
-                metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago"))
+                pay = cursor.getInt(cursor.getColumnIndexOrThrow("pago")) == 1,
+                expirationDate = cursor.getString(cursor.getColumnIndexOrThrow("vencimiento")),
+                paymentMethod = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago"))
             )
             cursor.close()
             return socio

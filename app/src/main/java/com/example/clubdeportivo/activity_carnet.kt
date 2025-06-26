@@ -25,31 +25,31 @@ class ActivityCarnet : AppCompatActivity() {
         val documento = intent.getStringExtra("documento")
 
         if (documento != null) {
-            val socio = dbHelper.getSocioPorDocumento(documento)
+            val member = dbHelper.getSocioPorDocumento(documento)
             val actividades = dbHelper.getActividadesDeSocio(documento)
 
-            if (socio != null) {
-                findViewById<TextView>(R.id.nombreUsuario).text = "${socio.nombre} ${socio.apellido}"
-                findViewById<TextView>(R.id.dni).text = socio.documento
-                findViewById<TextView>(R.id.generoUsuario).text = socio.genero
-                findViewById<TextView>(R.id.emailUsuario).text = socio.email
-                val vencimientoDate = LocalDate.parse(socio.vencimiento)
+            if (member != null) {
+                findViewById<TextView>(R.id.nombreUsuario).text = "${member.name} ${member.surname}"
+                findViewById<TextView>(R.id.dni).text = member.document
+                findViewById<TextView>(R.id.generoUsuario).text = member.gender
+                findViewById<TextView>(R.id.emailUsuario).text = member.email
+                val vencimientoDate = LocalDate.parse(member.expirationDate)
                 val hoy = LocalDate.now()
                 val estadoCuotaTexto = if (vencimientoDate.isBefore(hoy)) "Vencida" else "Paga"
                 findViewById<TextView>(R.id.estadoCuota).text = estadoCuotaTexto
-                findViewById<TextView>(R.id.vencimientoUsuario).text = socio.vencimiento
+                findViewById<TextView>(R.id.vencimientoUsuario).text = member.expirationDate
 
                 val btnPagar = findViewById<Button>(R.id.btn_add)
-                if (socio.pago) {
+                if (member.pay) {
                     btnPagar.visibility = View.GONE
                 } else {
                     btnPagar.visibility = View.VISIBLE
                     btnPagar.setOnClickListener {
                         val intent = Intent(this, PayFee::class.java).apply {
-                            putExtra("documento", socio.documento)
-                            putExtra("nombre", socio.nombre)
-                            putExtra("apellido", socio.apellido)
-                            putExtra("email", socio.email)
+                            putExtra("documento", member.document)
+                            putExtra("nombre", member.name)
+                            putExtra("apellido", member.surname)
+                            putExtra("email", member.email)
                         }
                         startActivity(intent)
                     }

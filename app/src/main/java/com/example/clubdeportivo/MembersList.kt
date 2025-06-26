@@ -14,12 +14,14 @@ class MembersList : AppCompatActivity() {
     private lateinit var dbHelper: UserDBHelper
     private lateinit var listView: ListView
     private lateinit var searchView: SearchView
-    private lateinit var members: List<Socio>
+    private lateinit var members: List<Member>
     private lateinit var adapter: SocioAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_members_list)
+
+
 
         dbHelper = UserDBHelper(this)
         listView = findViewById(R.id.listViewSocios)
@@ -34,9 +36,9 @@ class MembersList : AppCompatActivity() {
 
         // Navegación al carnet al hacer click en un socio
         listView.setOnItemClickListener { _, _, position, _ ->
-            val socio = members[position]
+            val member = members[position]
             val intent = Intent(this, ActivityCarnet::class.java)
-            intent.putExtra("documento", socio.documento)
+            intent.putExtra("documento", member.document)
             startActivity(intent)
         }
 
@@ -46,7 +48,7 @@ class MembersList : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 val filtrados = members.filter {
-                    it.apellido.contains(newText.orEmpty(), ignoreCase = true)
+                    it.surname.contains(newText.orEmpty(), ignoreCase = true)
                 }
                 listView.adapter = SocioAdapter(this@MembersList, filtrados)
                 return true

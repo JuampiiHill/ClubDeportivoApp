@@ -1,15 +1,15 @@
 package com.example.clubdeportivo
 
-data class Socio(
+data class Member(
     val id: Int,
-    val nombre: String,
-    val apellido: String,
-    val documento: String,
-    val nacimiento: String,
-    val genero: String,
+    val name: String,
+    val surname: String,
+    val document: String,
+    val dateOfBirth: String,
+    val gender: String,
     val email: String,
     val apto: Boolean,
-    val pago: Boolean,
-    val vencimiento: String,
-    val metodoPago: String? = null
+    val pay: Boolean,
+    val expirationDate: String,
+    val paymentMethod: String? = null
 )

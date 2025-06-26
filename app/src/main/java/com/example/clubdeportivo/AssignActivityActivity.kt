@@ -38,8 +38,8 @@ class AssignActivityActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val socio = dbHelper.getSocioPorDocumento(dni)
-            if (socio == null) {
+            val member = dbHelper.getSocioPorDocumento(dni)
+            if (member == null) {
                 Toast.makeText(this, "Socio no encontrado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -55,7 +55,7 @@ class AssignActivityActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val exito = dbHelper.asignarActividad(socio.id, actividad.id, socio.documento, actividad.nombre)
+            val exito = dbHelper.asignarActividad(member.id, actividad.id, member.document, actividad.nombre)
 
             if (exito) {
                 Toast.makeText(this, "Actividad asignada con éxito", Toast.LENGTH_SHORT).show()

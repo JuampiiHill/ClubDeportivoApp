@@ -30,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
         val btnAddMember = findViewById<LinearLayout>(R.id.btn_add_member)
         btnAddMember.setOnClickListener{
             val intent = Intent(this, NewMember::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
 
