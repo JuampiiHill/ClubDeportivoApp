@@ -38,7 +38,7 @@ class AssignActivityActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val member = dbHelper.getSocioPorDocumento(dni)
+            val member = dbHelper.getMemberByDocument(dni)
             if (member == null) {
                 Toast.makeText(this, "Socio no encontrado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

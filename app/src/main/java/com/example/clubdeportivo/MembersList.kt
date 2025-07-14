@@ -1,63 +1,60 @@
 package com.example.clubdeportivo
 
-import SocioAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ListView
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.core.graphics.toColorInt
 class MembersList : AppCompatActivity() {
-
-    private lateinit var dbHelper: UserDBHelper
-    private lateinit var listView: ListView
-    private lateinit var searchView: SearchView
-    private lateinit var members: List<Member>
-    private lateinit var adapter: SocioAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_members_list)
 
+        val userName = intent.getStringExtra("nombre_usuario")
 
+        //Cambiar color del texto del recuadro de búsqueda
+        val searchView = findViewById<SearchView>(R.id.box_search)
+        searchView.post {
+            val searchText = searchView.findViewById<EditText>(
+                searchView.context.resources.getIdentifier(
+                "search_src_text","id", "android"
+            )
+            )
+            searchText?.let {
+                it.setTextColor("#A7A8A9".toColorInt())
+                it.setHintTextColor("#A7A8A9".toColorInt())
+                it.typeface = ResourcesCompat.getFont(this, R.font.nunito)
+            }
 
-        dbHelper = UserDBHelper(this)
-        listView = findViewById(R.id.listViewSocios)
-        searchView = findViewById(R.id.txt_search)
-
-        members = dbHelper.getAllMembers()
-        Log.d("SOCIOS", "Cantidad: ${members.size}")
-
-        adapter = SocioAdapter(this, members)
-        listView.adapter = adapter
-
-
-        // Navegación al carnet al hacer click en un socio
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val member = members[position]
-            val intent = Intent(this, ActivityCarnet::class.java)
-            intent.putExtra("documento", member.document)
-            startActivity(intent)
+            val searchIcon = searchView.findViewById<ImageView>(
+                searchView.context.resources.getIdentifier(
+                    "search_mag_icon", "id", "android"
+                )
+            )
+            searchIcon?.setColorFilter("#A7A8A9".toColorInt(), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        // Filtro de búsqueda por apellido
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?) = false
+        // Cargar socios desde la base de datos
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerMembers)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                val filtrados = members.filter {
-                    it.surname.contains(newText.orEmpty(), ignoreCase = true)
-                }
-                listView.adapter = SocioAdapter(this@MembersList, filtrados)
-                return true
-            }
-        })
+        val dbHelper = UserDBHelper(this)
+        val members = dbHelper.getAllMembers()
+
+        val adapter = MemberAdapter(members)
+        recyclerView.adapter = adapter
 
         // Barra de navegación inferior
         findViewById<LinearLayout>(R.id.nav_btn_home).setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
+            intent.putExtra("nombre_usuario", userName)
         }
 
         findViewById<LinearLayout>(R.id.nav_btn_activities).setOnClickListener {

@@ -9,7 +9,6 @@
     android:background="@color/fondo_oscuro"
     tools:context=".MembersList">
 
-    <!-- Parte superior curva con logo -->
     <LinearLayout
         android:id="@+id/topContainer"
         android:layout_width="match_parent"
@@ -28,55 +27,57 @@
             android:contentDescription="@string/logo_de_la_aplicacion" />
     </LinearLayout>
 
-    <!-- Scroll general -->
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/form_scroll"
-        android:layout_width="360dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/topContainer"
-        app:layout_constraintBottom_toTopOf="@id/navigation_bar"
+        android:background="@drawable/list_container"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/topContainer">
 
-        <LinearLayout
-            android:id="@+id/main_container"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/list_container"
-            android:orientation="vertical"
-            android:padding="30dp"
-            android:gravity="center_horizontal">
+            android:fontFamily="@font/nunito_extrabold"
+            android:paddingBottom="10dp"
+            android:text="@string/members"
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
-            <TextView
+        <SearchView
+            android:id="@+id/box_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_searchview"
+            android:iconifiedByDefault="false"
+            android:queryHint="Buscar socio por Apellido" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/form_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@id/navigation_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topContainer">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMembers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_extrabold"
-                android:paddingBottom="10dp"
-                android:text="@string/members"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+                android:padding="16dp"
+                tools:listitem="@layout/activity_socio_item" />
 
-            <SearchView
-                android:id="@+id/txt_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#EFEFEF"
-                android:iconifiedByDefault="false"
-                android:queryHint="Buscar socio por Apellido"/>
+        </androidx.core.widget.NestedScrollView>
 
-            <ListView
-                android:id="@+id/listViewSocios"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingBottom="140dp"
-                android:nestedScrollingEnabled="false"
-                android:clipToPadding="false"/>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
-    <!-- Barra de navegación (original, con altura uniforme) -->
     <LinearLayout
         android:id="@+id/navigation_bar"
         android:layout_width="0dp"
@@ -87,7 +88,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Inicio -->
         <LinearLayout
             android:id="@+id/nav_btn_home"
             android:layout_width="0dp"
@@ -116,7 +116,6 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <!-- Socios (activo) -->
         <LinearLayout
             android:id="@+id/nav_btn_members"
             android:layout_width="0dp"
@@ -145,7 +144,6 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <!-- Actividades -->
         <LinearLayout
             android:id="@+id/nav_btn_activities"
             android:layout_width="0dp"
@@ -174,7 +172,6 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <!-- Pagos -->
         <LinearLayout
             android:id="@+id/nav_btn_payments"
             android:layout_width="0dp"
@@ -205,9 +202,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.example.clubdeportivo
 
-import com.example.clubdeportivo.ActividadAdapter
 import ActividadItem
 import android.app.AlertDialog
 import android.content.Intent
@@ -26,7 +25,7 @@ class ActivityList : AppCompatActivity() {
 
         dbHelper = UserDBHelper(this)
         recyclerView = findViewById(R.id.recyclerViewActividades)
-        searchView = findViewById(R.id.txt_search)
+        searchView = findViewById(R.id.box_search)
         btnAdd = findViewById(R.id.btn_add_activity)
         btnRemove = findViewById(R.id.btn_remove_activity)
 

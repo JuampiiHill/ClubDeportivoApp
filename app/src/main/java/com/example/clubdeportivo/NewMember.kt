@@ -1,12 +1,12 @@
 package com.example.clubdeportivo
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.view.ViewGroup
 import android.app.DatePickerDialog
+import android.util.Log
 import java.util.Calendar
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -17,11 +17,11 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 
 class NewMember : AppCompatActivity() {
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_member)
 
+        // Configuración del Spinner
         val spinner = findViewById<Spinner>(R.id.spinnerGender)
         val options = arrayOf("Género","Femenino", "Masculino", "Otro")
 
@@ -48,6 +48,9 @@ class NewMember : AppCompatActivity() {
         val switchApto = findViewById<SwitchMaterial>(R.id.switch_apto)
         val switchPay = findViewById<SwitchMaterial>(R.id.switch_pay)
 
+        val paychecked = switchPay.isChecked
+        Log.e("SWITCH DE PAGO", "dato: ${paychecked}")
+
         inputDateOfBirth.setOnClickListener {
             showDatePickerDialog(inputDateOfBirth)
         }
@@ -64,20 +67,19 @@ class NewMember : AppCompatActivity() {
             val gender = spinner.selectedItem.toString()
             val email = inputEmail.text.toString()
 
-            fun isValidEmail(email: String): Boolean {
-                return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+            //Manejo de fechas
+            val formatIn = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val formatOut = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+            val dateConvert: String = try {
+                formatOut.format(formatIn.parse(dateOfBirth)!!)
+            } catch (e: Exception) {
+                Log.e("FECHA_CONVERT", "Error convirtiendo fecha: $dateOfBirth")
+                return@setOnClickListener
             }
 
-            fun isValidDate(dateStr: String): Boolean {
-                val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                format.isLenient = false
-
-                return try {
-                    val date = format.parse(dateStr)
-                    date != null
-                } catch (ex: Exception) {
-                    false
-                }
+            fun isValidEmail(email: String): Boolean {
+                return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
             }
 
             if (name.isEmpty() || surname.isEmpty() || document.isEmpty() || dateOfBirth.isEmpty() || gender.isEmpty() || email.isEmpty()) {
@@ -92,26 +94,23 @@ class NewMember : AppCompatActivity() {
                 Toast.makeText(this, "Email inválido", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if(!isValidDate(dateOfBirth)) {
-                Toast.makeText(this, "Fecha inválida, use el formato dd/MM/yyyy", Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
+
             if (!switchApto.isChecked) {
                 Toast.makeText(this, "Entregar el apto médico es obligatorio", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+
             val success = dbHelper.addMember(
                 name = name,
                 surname = surname,
                 document = document,
-                dateOfBirth = dateOfBirth,
+                dateOfBirth = dateConvert,
                 gender = gender,
                 email = email,
                 apto = switchApto.isChecked,
                 pay = switchPay.isChecked
                 )
                 if (success) {
-                    Toast.makeText(this, "Socio registrado correctamente", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, SuccessRegister::class.java))
                     finish()
                 } else {
@@ -154,7 +153,6 @@ class NewMember : AppCompatActivity() {
             val formattedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", selectedDayOfMonth, selectedMonth + 1, selectedYear)
             editText.setText(formattedDate)
         }, year, month, day)
-
         datePickerDialog.show()
     }
 }

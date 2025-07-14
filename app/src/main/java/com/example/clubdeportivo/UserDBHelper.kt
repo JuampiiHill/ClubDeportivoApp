@@ -8,9 +8,11 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.Locale
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 13) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 24) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -142,33 +144,31 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         return list
     }
 
-    fun getSocioPorDocumento(documento: String): Member? {
+    fun getMemberByDocument(document: String): Member? {
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM socios WHERE documento = ?", arrayOf(documento))
+        val cursor = db.rawQuery("SELECT * FROM members WHERE document = ?", arrayOf(document))
 
         if (cursor.moveToFirst()) {
-            val socio = Member(
+            val member = Member(
                 id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
-                name = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
-                surname = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
-                document = cursor.getString(cursor.getColumnIndexOrThrow("documento")),
-                dateOfBirth = cursor.getString(cursor.getColumnIndexOrThrow("nacimiento")),
-                gender = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
+                name = cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                surname = cursor.getString(cursor.getColumnIndexOrThrow("surname")),
+                document = cursor.getString(cursor.getColumnIndexOrThrow("document")),
+                dateOfBirth = cursor.getString(cursor.getColumnIndexOrThrow("dateOfBirth")),
+                gender = cursor.getString(cursor.getColumnIndexOrThrow("gender")),
                 email = cursor.getString(cursor.getColumnIndexOrThrow("email")),
                 apto = cursor.getInt(cursor.getColumnIndexOrThrow("apto")) == 1,
-                pay = cursor.getInt(cursor.getColumnIndexOrThrow("pago")) == 1,
-                expirationDate = cursor.getString(cursor.getColumnIndexOrThrow("vencimiento")),
-                paymentMethod = cursor.getString(cursor.getColumnIndexOrThrow("metodo_pago"))
+                pay = cursor.getInt(cursor.getColumnIndexOrThrow("pay")) == 1,
+                expirationDate = cursor.getString(cursor.getColumnIndexOrThrow("expirationDate")),
+                paymentMethod = cursor.getString(cursor.getColumnIndexOrThrow("paymentMethod"))
             )
             cursor.close()
-            return socio
+            return member
         }
-
         cursor.close()
         return null
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun addMember(
         name: String,
         surname: String,
@@ -177,36 +177,41 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         gender: String,
         email: String,
         apto: Boolean,
-        pay: Boolean
+        pay: Boolean,
     ): Boolean {
         val db = writableDatabase
         return try {
-            val calendar = Calendar.getInstance()
-            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-            calendar.add(Calendar.MONTH, 1)
-            val expirationDate = dateFormat.format(calendar.time)
-
-            db.execSQL(
-                """
+            val expirationDate = if (pay) {
+                val calendar = Calendar.getInstance()
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                //val expirationDate = dateFormat.format(calendar.time)
+                calendar.add(Calendar.MONTH, 1)
+                dateFormat.format(calendar.time)
+            } else {
+                ""
+            }
+                db.execSQL(
+                    """
                 INSERT INTO members 
                 (name, surname, document, dateOfBirth, gender, email, apto, pay, expirationDate, paymentMethod)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """.trimIndent(),
-                arrayOf(
-                    name,
-                    surname,
-                    document,
-                    dateOfBirth,
-                    gender,
-                    email,
-                    if (apto) 1 else 0,
-                    if (pay) 1 else 0,
-                    expirationDate,
-                    ""
+                    arrayOf(
+                        name,
+                        surname,
+                        document,
+                        dateOfBirth,
+                        gender,
+                        email,
+                        if (apto) 1 else 0,
+                        if (pay) 1 else 0,
+                        expirationDate ?: "",
+                        //expirationDate,
+                        ""
+                    )
                 )
-            )
-            true
-        } catch (ex: Exception) {
+                true
+            } catch (ex: Exception) {
             Log.e("DB_SOCIO_INSERT", "Error al insertar socio", ex)
             false
         } finally {

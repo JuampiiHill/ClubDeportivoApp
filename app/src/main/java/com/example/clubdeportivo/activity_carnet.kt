@@ -25,7 +25,7 @@ class ActivityCarnet : AppCompatActivity() {
         val documento = intent.getStringExtra("documento")
 
         if (documento != null) {
-            val member = dbHelper.getSocioPorDocumento(documento)
+            val member = dbHelper.getMemberByDocument(documento)
             val actividades = dbHelper.getActividadesDeSocio(documento)
 
             if (member != null) {
@@ -36,7 +36,7 @@ class ActivityCarnet : AppCompatActivity() {
                 val vencimientoDate = LocalDate.parse(member.expirationDate)
                 val hoy = LocalDate.now()
                 val estadoCuotaTexto = if (vencimientoDate.isBefore(hoy)) "Vencida" else "Paga"
-                findViewById<TextView>(R.id.estadoCuota).text = estadoCuotaTexto
+                findViewById<TextView>(R.id.statusQuote).text = estadoCuotaTexto
                 findViewById<TextView>(R.id.vencimientoUsuario).text = member.expirationDate
 
                 val btnPagar = findViewById<Button>(R.id.btn_add)

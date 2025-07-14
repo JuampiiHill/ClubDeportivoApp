@@ -52,11 +52,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         //Eventos para el nav
         val btnNavMembers: LinearLayout = findViewById(R.id.nav_btn_members)
         btnNavMembers.setOnClickListener{
             val intent = Intent(this, MembersList::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
 

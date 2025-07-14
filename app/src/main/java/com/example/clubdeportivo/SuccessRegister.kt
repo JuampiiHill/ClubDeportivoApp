@@ -28,7 +28,7 @@ class SuccessRegister : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()
-        }, 5000)
+        }, 3000)
 
 
         btnBack.setOnClickListener {
