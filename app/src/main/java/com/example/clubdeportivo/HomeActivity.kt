@@ -37,18 +37,21 @@ class HomeActivity : AppCompatActivity() {
         val btnPay: LinearLayout = findViewById(R.id.btn_pay)
         btnPay.setOnClickListener{
             val intent = Intent(this, PayFee::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
 
         val btListQuotas: LinearLayout = findViewById(R.id.btn_list_quotas)
         btListQuotas.setOnClickListener{
             val intent = Intent(this, MembersList::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
 
         val btnAddActivity: LinearLayout = findViewById(R.id.btn_add_activity)
         btnAddActivity.setOnClickListener{
             val intent = Intent(this, ActivityList::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
 
@@ -63,12 +66,14 @@ class HomeActivity : AppCompatActivity() {
         val btnNavActivity: LinearLayout = findViewById(R.id.nav_btn_activities)
         btnNavActivity.setOnClickListener{
             val intent = Intent(this, ActivityList::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
 
         val btnNavPayments: LinearLayout = findViewById(R.id.nav_btn_payments)
         btnNavPayments.setOnClickListener{
             val intent = Intent(this, PayFee::class.java)
+            intent.putExtra("nombre_usuario", userName)
             startActivity(intent)
         }
     }

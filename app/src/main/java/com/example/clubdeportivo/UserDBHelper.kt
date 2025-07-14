@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.Locale
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 24) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 25) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -219,12 +219,12 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         }
     }
 
-    fun actualizarPago(documento: String, nuevoVencimiento: String, metodoPago: String): Boolean {
+    fun updatePayment(document: String, newExpiration: String, paymentMethod: String): Boolean {
         return try {
             val db = writableDatabase
             db.execSQL(
-                "UPDATE socios SET pago = 1, vencimiento = ?, metodo_pago = ? WHERE documento = ?",
-                arrayOf(nuevoVencimiento, metodoPago, documento)
+                "UPDATE members SET pay = 1, expirationDate = ?, paymentMethod = ? WHERE document = ?",
+                arrayOf(newExpiration, paymentMethod, document)
             )
             db.close()
             true

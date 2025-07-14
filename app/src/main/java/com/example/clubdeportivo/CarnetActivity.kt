@@ -59,12 +59,16 @@ class CarnetActivity : AppCompatActivity() {
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val todayDate = formatter.parse(formatter.format(calendar.time))
 
-        val statusQuoteText = if (member.expirationDate.isNullOrEmpty()) {
+        val statusQuoteText = if (member.expirationDate.isEmpty()) {
             "No paga"
         } else {
             try {
-                val expirationDate = formatter.parse((member.expirationDate))
-                if (expirationDate.before(todayDate)) "Vencida" else "Paga"
+                val expirationDate = formatter.parse(member.expirationDate)
+                if (expirationDate != null && todayDate != null && expirationDate.before(todayDate)) {
+                    "Vencida"
+                } else {
+                    "Paga"
+                }
             } catch (e: Exception) {
                 Log.e("CARNET", "Error al parsear fecha de vencimiento: ${member.expirationDate}", e)
                 "Fecha inválida"
@@ -74,7 +78,7 @@ class CarnetActivity : AppCompatActivity() {
 
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-        val formattedExpiration = if (member.expirationDate.isNullOrEmpty()) {
+        val formattedExpiration = if (member.expirationDate.isEmpty()) {
             "No paga"
         } else {
             try {
@@ -101,10 +105,10 @@ class CarnetActivity : AppCompatActivity() {
             btnPay.setOnClickListener{
                 val intent = Intent(this, PayFee::class.java)
                 intent.putExtra("document", member.document)
+                intent.putExtra("name", member.name)
+                intent.putExtra("surname", member.surname)
+                intent.putExtra("email", member.email)
                 startActivity(intent)
-                Log.e("PAY_FEE", "Enviando documento hacia la pagina de pago ${member.document}" )
-                // ACA DEBEMOS DERIVAR AL PAGO DE LA CUOTA ENVIANDO EL DOCUMENTO COMO UN EXTRA PARA TRAER LOS DATOS
-                // DEL SOCIO DESDE LA DB
             }
         }
 

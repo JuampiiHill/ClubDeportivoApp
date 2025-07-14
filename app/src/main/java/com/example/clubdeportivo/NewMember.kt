@@ -39,6 +39,9 @@ class NewMember : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
+        val userName = intent.getStringExtra("nombre_usuario")
+
+
         // Referencias a los campos del formulario
         val inputName = findViewById<EditText>(R.id.txt_name)
         val inputSurname = findViewById<EditText>(R.id.txt_surname)
@@ -126,19 +129,27 @@ class NewMember : AppCompatActivity() {
 
         // Eventos de navegación inferior
         findViewById<LinearLayout>(R.id.nav_btn_home).setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("nombre_usuario", userName)
+            startActivity(intent)
         }
+
         findViewById<LinearLayout>(R.id.nav_btn_members).setOnClickListener {
-            startActivity(Intent(this, MembersList::class.java))
+            val intent = Intent(this, MembersList::class.java)
+            intent.putExtra("nombre_usuario", userName)
+            startActivity(intent)
         }
 
         findViewById<LinearLayout>(R.id.nav_btn_activities).setOnClickListener {
-            startActivity(Intent(this,
-                ActivityList::class.java))
+            val intent = Intent(this, ActivityList::class.java)
+            intent.putExtra("nombre_usuario", userName)
+            startActivity(intent)
         }
 
         findViewById<LinearLayout>(R.id.nav_btn_payments).setOnClickListener {
-            startActivity(Intent(this, PayFee::class.java))
+            val intent = Intent(this, PayFee::class.java)
+            intent.putExtra("nombre_usuario", userName)
+            startActivity(intent)
         }
     }
     private fun showDatePickerDialog(editText: EditText) {
