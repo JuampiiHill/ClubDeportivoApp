@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.Locale
 
-class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 25) {
+class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null, 26) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -45,17 +45,17 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         """.trimIndent())
 
         db.execSQL("""
-            CREATE TABLE IF NOT EXISTS actividades (
+            CREATE TABLE IF NOT EXISTS activities (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nombre TEXT,
-                dia TEXT,
-                horario TEXT,
-                cupo_disponible INTEGER
+                name TEXT,
+                day TEXT,
+                schedule TEXT,
+                availableSpace INTEGER
             )
         """.trimIndent())
 
             db.execSQL("""
-            INSERT INTO actividades (nombre, dia, horario, cupo_disponible) VALUES
+            INSERT INTO activities (name, day, schedule, availableSpace) VALUES
             ('Fútbol', 'Lunes', '18:00', 10),
             ('Natación', 'Martes', '16:00', 8),
             ('Gimnasia', 'Miércoles', '19:00', 15),
@@ -81,7 +81,7 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS users")
         db.execSQL("DROP TABLE IF EXISTS members")
-        db.execSQL("DROP TABLE IF EXISTS actividades")
+        db.execSQL("DROP TABLE IF EXISTS activities")
         db.execSQL("DROP TABLE IF EXISTS inscripciones")
 
         onCreate(db)
@@ -234,35 +234,35 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         }
     }
 
-    fun getActividadPorNombre(nombre: String): Actividad? {
+    fun getActivityByName(name: String): Activity? {
         val db = readableDatabase
         val cursor = db.rawQuery(
-            "SELECT * FROM actividades WHERE LOWER(nombre) = LOWER(?)",
-            arrayOf(nombre)
+            "SELECT * FROM activities WHERE LOWER(name) = LOWER(?)",
+            arrayOf(name)
         )
-        var actividad: Actividad? = null
+        var activity: Activity? = null
 
         if (cursor.moveToFirst()) {
-            actividad = Actividad(
+            activity = Activity(
                 id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
-                nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
-                dia = cursor.getString(cursor.getColumnIndexOrThrow("dia")),
-                horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
-                cupoDisponible = cursor.getInt(cursor.getColumnIndexOrThrow("cupo_disponible"))
+                name = cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                day = cursor.getString(cursor.getColumnIndexOrThrow("day")),
+                schedule = cursor.getString(cursor.getColumnIndexOrThrow("schedule")),
+                availableSpace = cursor.getInt(cursor.getColumnIndexOrThrow("availableSpace"))
             )
         }
 
         cursor.close()
         db.close()
-        return actividad
+        return activity
     }
 
-    fun insertarActividad(nombre: String, dia: String, horario: String, cupo: Int): Boolean {
+    fun addActivity(name: String, day: String, schedule: String, space: Int): Boolean {
         val db = writableDatabase
         return try {
             db.execSQL(
-                "INSERT INTO actividades (nombre, dia, horario, cupo_disponible) VALUES (?, ?, ?, ?)",
-                arrayOf(nombre, dia, horario, cupo)
+                "INSERT INTO activities (name, day, schedule, availableSpace) VALUES (?, ?, ?, ?)",
+                arrayOf(name, day, schedule, space)
             )
             true
         } catch (e: Exception) {
@@ -273,10 +273,10 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         }
     }
 
-    fun eliminarActividadPorNombre(nombre: String): Boolean {
+    fun deleteActivity(name: String): Boolean {
         val db = writableDatabase
         return try {
-            db.execSQL("DELETE FROM actividades WHERE LOWER(nombre) = LOWER(?)", arrayOf(nombre))
+            db.execSQL("DELETE FROM activities WHERE LOWER(name) = LOWER(?)", arrayOf(name))
             true
         } catch (e: Exception) {
             Log.e("DB", "Error al eliminar actividad", e)
@@ -286,65 +286,65 @@ class UserDBHelper(context: Context) : SQLiteOpenHelper(context, "UsersDB", null
         }
     }
 
-    fun getAllActividades(): List<Actividad> {
-        val lista = mutableListOf<Actividad>()
+    fun getAllActividades(): List<Activity> {
+        val list = mutableListOf<Activity>()
         val db = readableDatabase
-        val cursor = db.rawQuery("SELECT * FROM actividades", null)
+        val cursor = db.rawQuery("SELECT * FROM activities", null)
 
         while (cursor.moveToNext()) {
-            lista.add(
-                Actividad(
+            list.add(
+                Activity(
                     id = cursor.getInt(cursor.getColumnIndexOrThrow("id")),
-                    nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
-                    dia = cursor.getString(cursor.getColumnIndexOrThrow("dia")),
-                    horario = cursor.getString(cursor.getColumnIndexOrThrow("horario")),
-                    cupoDisponible = cursor.getInt(cursor.getColumnIndexOrThrow("cupo_disponible"))
+                    name = cursor.getString(cursor.getColumnIndexOrThrow("name")),
+                    day = cursor.getString(cursor.getColumnIndexOrThrow("day")),
+                    schedule = cursor.getString(cursor.getColumnIndexOrThrow("schedule")),
+                    availableSpace = cursor.getInt(cursor.getColumnIndexOrThrow("availableSpace"))
                 )
             )
         }
 
         cursor.close()
-        return lista
+        return list
     }
 
-    fun getActividadesDeSocio(dni: String): List<String> {
-        val lista = mutableListOf<String>()
+    fun getMemberActitivies(dni: String): List<String> {
+        val list = mutableListOf<String>()
         val db = readableDatabase
 
         val cursor = db.rawQuery(
             """
-        SELECT a.nombre FROM actividades a
+        SELECT a.name FROM activities a
         INNER JOIN inscripciones i ON a.id = i.id_actividad
-        INNER JOIN socios s ON s.id = i.id_socio
-        WHERE s.documento = ?
+        INNER JOIN member m ON m.id = i.id_socio
+        WHERE m.document = ?
         """.trimIndent(),
             arrayOf(dni)
         )
 
-        Log.d("DEBUG", "Cantidad de actividades: ${lista.size}")
+        Log.d("DEBUG", "Cantidad de actividades: ${list.size}")
 
         while (cursor.moveToNext()) {
             val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
-            lista.add(nombre)
+            list.add(nombre)
         }
 
         cursor.close()
-        return lista
+        return list
     }
 
-    fun asignarActividad(idSocio: Int, idActividad: Int, documento: String, nombreActividad: String): Boolean {
+    fun assignActivity(memberId: Int, activityId: Int, document: String, nameActivity: String): Boolean {
         val db = writableDatabase
         return try {
             db.beginTransaction()
 
             db.execSQL(
                 "INSERT INTO inscripciones (id_socio, id_actividad) VALUES (?, ?)",
-                arrayOf(idSocio, idActividad)
+                arrayOf(memberId, activityId)
             )
 
             db.execSQL(
-                "UPDATE actividades SET cupo_disponible = cupo_disponible - 1 WHERE id = ?",
-                arrayOf(idActividad)
+                "UPDATE activities SET availableSpace = availableSpace - 1 WHERE id = ?",
+                arrayOf(activityId)
             )
 
             db.setTransactionSuccessful()

@@ -44,18 +44,18 @@ class AssignActivityActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val actividad = dbHelper.getActividadPorNombre(nombreActividad)
-            if (actividad == null) {
+            val activity = dbHelper.getActivityByName(nombreActividad)
+            if (activity == null) {
                 Toast.makeText(this, "Actividad no encontrada", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (actividad.cupoDisponible <= 0) {
+            if (activity.availableSpace <= 0) {
                 Toast.makeText(this, "Sin cupo disponible", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val exito = dbHelper.asignarActividad(member.id, actividad.id, member.document, actividad.nombre)
+            val exito = dbHelper.assignActivity(member.id, activity.id, member.document, activity.name)
 
             if (exito) {
                 Toast.makeText(this, "Actividad asignada con éxito", Toast.LENGTH_SHORT).show()

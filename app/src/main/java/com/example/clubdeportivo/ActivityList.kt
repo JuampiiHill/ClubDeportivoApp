@@ -1,17 +1,67 @@
 package com.example.clubdeportivo
 
-import ActividadItem
-import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ActivityList : AppCompatActivity() {
 
-    private lateinit var dbHelper: UserDBHelper
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_list)
+
+        val searchView = findViewById<SearchView>(R.id.box_search)
+        searchView.post {
+            val searchText = searchView.findViewById<EditText>(
+                searchView.context.resources.getIdentifier(
+                    "search_src_text","id", "android"
+                )
+            )
+            searchText?.let {
+                it.setTextColor("#A7A8A9".toColorInt())
+                it.setHintTextColor("#A7A8A9".toColorInt())
+                it.typeface = ResourcesCompat.getFont(this, R.font.nunito)
+            }
+
+            val searchIcon = searchView.findViewById<ImageView>(
+                searchView.context.resources.getIdentifier(
+                    "search_mag_icon", "id", "android"
+                )
+            )
+            searchIcon?.setColorFilter("#A7A8A9".toColorInt(), android.graphics.PorterDuff.Mode.SRC_IN)
+        }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewActividades)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val dbHelper = UserDBHelper(this)
+        val activities = dbHelper.getAllActividades()
+
+        val adapter = ActivityAdapter(activities) { activity ->
+            Toast.makeText(this, "Seleccionaste", Toast.LENGTH_SHORT).show()
+        }
+        recyclerView.adapter = adapter
+
+        //Filtrado de actividades
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean = false
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val filtered = activities.filter {
+                    it.name.contains(newText ?: "", ignoreCase = true)
+                }
+                adapter.updateList(filtered)
+                return true
+            }
+        })
+
+    }
+
+    /**private lateinit var dbHelper: UserDBHelper
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
     private lateinit var actividades: List<ActividadItem>
@@ -19,9 +69,7 @@ class ActivityList : AppCompatActivity() {
     private lateinit var btnAdd: Button
     private lateinit var btnRemove: Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
+
 
         dbHelper = UserDBHelper(this)
         recyclerView = findViewById(R.id.recyclerViewActividades)
@@ -101,5 +149,5 @@ class ActivityList : AppCompatActivity() {
             startActivity(intent)
         }
         recyclerView.adapter = adapter
-    }
+    } **/
 }

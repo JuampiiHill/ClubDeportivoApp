@@ -1,6 +1,5 @@
 package com.example.clubdeportivo
 
-import ActividadItem
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -8,29 +7,32 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ActividadAdapter(
-    private val actividades: List<ActividadItem>,
-    private val onClick: (ActividadItem) -> Unit
-) : RecyclerView.Adapter<ActividadAdapter.ActividadViewHolder>() {
+class ActivityAdapter(
+    private var activities: List<Activity>,
+    private val onClick: (Activity) -> Unit
+) : RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>() {
 
-    class ActividadViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nombre: TextView = view.findViewById(R.id.nombreActividad)
-        val cupo: TextView = view.findViewById(R.id.cupoDisponible)
+    class ActivityViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val name: TextView = view.findViewById(R.id.activity_name)
+        val day: TextView = view.findViewById(R.id.day)
+        val schedule: TextView = view.findViewById(R.id.txt_activity_schedule)
+        val cupo: TextView = view.findViewById(R.id.availableSpace)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActividadViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.activity_item, parent, false)
-        return ActividadViewHolder(view)
+        return ActivityViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ActividadViewHolder, position: Int) {
-        val actividad = actividades[position]
-        holder.nombre.text = actividad.nombre
-        holder.cupo.text = "Cupo disponible: ${actividad.cupoDisponible}"
+    override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
+        val activity = activities[position]
+        holder.name.text = activity.name
+        holder.day.text = "Día: ${activity.day}"
+        holder.schedule.text = "Horario: ${activity.schedule}"
+        holder.cupo.text = "Cupo disponible: ${activity.availableSpace}"
 
-        val cupoStr = actividad.cupoDisponible.trim().lowercase()
-        val color = if (cupoStr == "agotado" || cupoStr == "0") {
+        val color = if (activity.availableSpace <= 0) {
             Color.parseColor("#C00000")
         } else {
             Color.parseColor("#3FA34D")
@@ -38,11 +40,16 @@ class ActividadAdapter(
         holder.cupo.setTextColor(color)
 
         holder.itemView.setOnClickListener {
-            if (cupoStr != "agotado" && cupoStr != "0") {
-                onClick(actividad)
+            if (activity.availableSpace > 0) {
+                onClick(activity)
             }
         }
     }
 
-    override fun getItemCount() = actividades.size
+    override fun getItemCount() = activities.size
+
+    fun updateList(newList: List<Activity>) {
+        activities = newList
+        notifyDataSetChanged()
+    }
 }

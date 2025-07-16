@@ -21,6 +21,7 @@ class NewMember : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_member)
 
+
         // Configuración del Spinner
         val spinner = findViewById<Spinner>(R.id.spinnerGender)
         val options = arrayOf("Género","Femenino", "Masculino", "Otro")
@@ -114,7 +115,9 @@ class NewMember : AppCompatActivity() {
                 pay = switchPay.isChecked
                 )
                 if (success) {
-                    startActivity(Intent(this, SuccessRegister::class.java))
+                    val intent = Intent(this, SuccessRegister::class.java)
+                    intent.putExtra("nombre_usuario", userName)
+                    startActivity(intent)
                     finish()
                 } else {
                     Toast.makeText(this, "Error al registrar socio", Toast.LENGTH_LONG).show()
@@ -124,7 +127,9 @@ class NewMember : AppCompatActivity() {
 
         val btnBack: Button = findViewById(R.id.btn_back)
         btnBack.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("nombre_usuario", userName)
+            startActivity(intent)
         }
 
         // Eventos de navegación inferior

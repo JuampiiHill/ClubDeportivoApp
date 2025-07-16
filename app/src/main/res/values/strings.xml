@@ -15,7 +15,7 @@
     <string name="quote_expired">Vencidas</string>
     <string name="quote_paid">Paga</string>
     <string name="quote_none">No paga</string>
-    <string name="quote_status">Estado: %1$s</string>
+    <string name="quote_status">Estado de cuota: %1$s</string>
     <string name="userFullName">Nombre Completo</string>
     <string name="activityUser">Actividades Asignadas</string>
 

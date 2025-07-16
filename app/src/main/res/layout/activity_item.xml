@@ -1,34 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:layout_marginHorizontal="16dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="0dp"
-    app:cardBackgroundColor="#F2F2F2">
+    android:radius="16dp"
+    app:cardBackgroundColor="#F1F1F1"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="12dp">
 
         <TextView
-            android:id="@+id/nombreActividad"
-            android:layout_width="wrap_content"
+            android:id="@+id/activity_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de actividad"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:textColor="#000000" />
+            android:text="Nombre de la actividad"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/cupoDisponible"
-            android:layout_width="wrap_content"
+            android:id="@+id/day"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cupo disponible: 5"
-            android:textSize="14sp" />
+            android:text="Día"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/txt_activity_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horario"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/availableSpace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cupo diponible"
+            android:textSize="16sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

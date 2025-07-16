@@ -40,7 +40,7 @@ class NewActivityFormActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val insertado = dbHelper.insertarActividad(nombre, dia, horario, cupo)
+            val insertado = dbHelper.addActivity(nombre, dia, horario, cupo)
             if (insertado) {
                 Toast.makeText(this, "Actividad guardada con éxito", Toast.LENGTH_SHORT).show()
                 finish()
