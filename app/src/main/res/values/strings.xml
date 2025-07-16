@@ -65,7 +65,7 @@
     <string name="card">Tarjeta</string>
     <string name="pay">Pagar</string>
     <string name="success_register">¡Registro Exitoso!</string>
-    <string name="redirect">Serás redirigido al menú principal en 5 segundos...</string>
+    <string name="redirect">Serás redirigido al menú principal en 3 segundos...</string>
     <string name="success_pay">¡Pago exitoso!</string>
     <string name="activities">Actividades</string>
     <string name="name_activity">Nombre de actividad</string>
